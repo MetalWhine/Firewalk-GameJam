@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byv3plgrvsm3u"]
+
+[ext_resource type="Script" uid="uid://cl230sxlqgjh4" path="res://src/PlayerHand.cs" id="1_lwp4m"]
+
+[node name="PlayerHand" type="Node2D"]
+script = ExtResource("1_lwp4m")

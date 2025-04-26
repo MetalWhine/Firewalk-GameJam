@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cad4ciie1n67x"]
+
+[ext_resource type="Script" uid="uid://capvk74es55x4" path="res://src/Card.cs" id="1_oj312"]
+[ext_resource type="Texture2D" uid="uid://b2mj5dp1jw7lw" path="res://assets/Cards/card_back.png" id="2_oj312"]
+
+[node name="card" type="Control"]
+custom_minimum_size = Vector2(200, 280)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 280.0
+pivot_offset = Vector2(100, 160)
+script = ExtResource("1_oj312")
+
+[node name="Card Sprite" type="Sprite2D" parent="."]
+position = Vector2(100, 140)
+texture = ExtResource("2_oj312")
+
+[node name="Card Shadow" type="Sprite2D" parent="Card Sprite"]
+modulate = Color(0, 0, 0, 0.392157)
+show_behind_parent = true
+texture = ExtResource("2_oj312")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
