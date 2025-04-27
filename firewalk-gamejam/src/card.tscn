@@ -1,25 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://cad4ciie1n67x"]
+[gd_scene load_steps=5 format=3 uid="uid://cad4ciie1n67x"]
 
+[ext_resource type="Theme" uid="uid://d0c8netu8eyu2" path="res://src/Card Theme.tres" id="1_cm0lg"]
 [ext_resource type="Script" uid="uid://capvk74es55x4" path="res://src/Card.cs" id="1_oj312"]
-[ext_resource type="Texture2D" uid="uid://b2mj5dp1jw7lw" path="res://assets/Cards/card_back.png" id="2_oj312"]
+[ext_resource type="Resource" uid="uid://2vq4rpjvw2pi" path="res://src/Card Resources/ScratchCard.tres" id="2_d8ann"]
+[ext_resource type="Texture2D" uid="uid://dnuc2flxcennx" path="res://assets/Cards/R1c.png" id="3_cm0lg"]
 
 [node name="card" type="Control"]
 custom_minimum_size = Vector2(200, 280)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 200.0
-offset_bottom = 280.0
-pivot_offset = Vector2(100, 160)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 280)
+theme = ExtResource("1_cm0lg")
 script = ExtResource("1_oj312")
+_cardResource = ExtResource("2_d8ann")
 
 [node name="Card Sprite" type="Sprite2D" parent="."]
 position = Vector2(100, 140)
-texture = ExtResource("2_oj312")
+texture = ExtResource("3_cm0lg")
 
-[node name="Card Shadow" type="Sprite2D" parent="Card Sprite"]
-modulate = Color(0, 0, 0, 0.392157)
-show_behind_parent = true
-texture = ExtResource("2_oj312")
+[node name="Name Label" type="Label" parent="Card Sprite"]
+offset_left = -84.0
+offset_top = -131.0
+offset_right = 87.0
+offset_bottom = -109.0
+theme = ExtResource("1_cm0lg")
+text = "Name"
+vertical_alignment = 1
+
+[node name="Description Label" type="Label" parent="Card Sprite"]
+offset_left = -83.0
+offset_top = 52.0
+offset_right = 83.0
+offset_bottom = 105.0
+theme = ExtResource("1_cm0lg")
+text = "Description"
+
+[node name="Type Label" type="Label" parent="Card Sprite"]
+offset_left = -45.0
+offset_top = 26.0
+offset_right = 44.0
+offset_bottom = 49.0
+theme = ExtResource("1_cm0lg")
+text = "Type"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost Label" type="Label" parent="Card Sprite"]
+offset_left = -20.0
+offset_top = 108.0
+offset_right = 20.0
+offset_bottom = 131.0
+theme = ExtResource("1_cm0lg")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

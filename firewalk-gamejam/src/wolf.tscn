@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbvhe2gbvxgpf"]
+
+[ext_resource type="Texture2D" uid="uid://j56gcf23s3uc" path="res://assets/Cards/R2f.png" id="1_5rhe1"]
+
+[node name="Wolf" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 43)
+texture = ExtResource("1_5rhe1")
+centered = false
+
+[node name="Rage Meter" type="HSlider" parent="."]
+offset_top = 23.0
+offset_right = 198.0
+offset_bottom = 39.0
+rounded = true
+editable = false
+scrollable = false
+tick_count = 4
+ticks_on_borders = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 194.0
+offset_bottom = 23.0
+text = "Rage: 0/0"
+horizontal_alignment = 1
+vertical_alignment = 1

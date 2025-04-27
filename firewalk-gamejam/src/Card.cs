@@ -3,6 +3,15 @@ using System;
 
 public partial class Card : Control
 {
+    // Card Resources
+    [Export]
+    private CardResource _cardResource;
+    private Label _cardNameLabel;
+    private Label _cardDescriptionLabel;
+    private Label _cardTypeLabel;
+    private Label _cardCostLabel;
+    private Sprite2D _cardSprite;
+
     // Booleans to prevent multiple cards from being dragged
     bool isMouseOver = false;
     bool isDragging = false;
@@ -17,6 +26,48 @@ public partial class Card : Control
 
     // Hand setting
     public int defaultZIndex = 1;
+
+    // Provide signal when card is dropped
+    [Signal]
+    public delegate void CardDroppedEventHandler();
+
+    public override void _Ready()
+    {
+        _cardSprite = GetNode<Sprite2D>("Card Sprite");
+        _cardSprite.Texture = _cardResource.CardSrpite;
+        
+        _cardNameLabel = GetNode<Label>("Card Sprite/Name Label");
+        _cardCostLabel = GetNode<Label>("Card Sprite/Cost Label");
+        _cardDescriptionLabel = GetNode<Label>("Card Sprite/Description Label");
+        _cardTypeLabel = GetNode<Label>("Card Sprite/ Label");
+
+        GenerateCardDescription();
+
+        base._Ready();
+    }
+
+    public void SetToDefaultZIndex()
+    {
+       ZIndex = defaultZIndex;
+    }
+
+    private void GenerateCardLabels()
+    {
+        _cardNameLabel.Text = _cardResource.CardName;
+        _cardCostLabel.Text = _cardResource.CardCost.ToString();
+        _cardTypeLabel.Text = _cardResource.cardType.ToString();
+        GenerateCardDescription();
+    }
+
+    private void GenerateCardDescription()
+    {
+        var Description = "";
+        if(_cardResource.DamageValue !=0)
+        {
+            Description += " Deal {_cardResource.DamageValue} damage \n";
+        }
+        _cardTypeLabel.Text = Description;
+    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -43,6 +94,7 @@ public partial class Card : Control
                 {
                     MouseBrain.current_card_held = null;
                 }
+                EmitSignal(SignalName.CardDropped);
             }
             return;
         }

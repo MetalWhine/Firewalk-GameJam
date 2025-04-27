@@ -5,38 +5,87 @@ using System.Reflection.Metadata.Ecma335;
 
 public partial class PlayerHand : Node2D
 {
-    private List<Card> player_hand = new List<Card>();
-    float screen_center_x = DisplayServer.WindowGetSize().X / 2;
-    float hand_position_y = DisplayServer.WindowGetSize().Y / 4;
-    const float card_width = 200f;
+    private List<Card> _playerHand = new List<Card>();
+    private float _screenCentreX = DisplayServer.WindowGetSize().X / 2;
+    private float _handPositionY = DisplayServer.WindowGetSize().Y * 0.75f;
+    const float _cardWidth = 130f;
+    const float _animationSpeed = 0.2f;
+
+    // Testing variables
+    private int _cardCount = 3;
+    [Export]
+    private PackedScene _cardScene { get; set; }
+
+
+    // Debugging
+    public override void _Ready()
+    {
+        for (int i = 0; i < _cardCount; i++) {
+            var NewCard = _cardScene.Instantiate<Card>();
+            AddCardToHand(NewCard);
+            NewCard.CardDropped += _on_card_card_dropped;
+            AddChild(NewCard);
+        }
+        base._Ready();
+    }
+
+    // Debugging
+    public override void _PhysicsProcess(double delta)
+    {
+        if (Input.IsActionJustPressed("ui_accept"))
+        {
+            var NewCard = _cardScene.Instantiate<Card>();
+            AddCardToHand(NewCard);
+            AddChild(NewCard);
+        }
+
+
+        base._PhysicsProcess(delta);
+    }
+
+    public void _on_card_card_dropped()
+    {
+        UpdatePositions();
+    }
 
     public void AddCardToHand(Card card)
     {
-        player_hand.Add(card);
+        _playerHand.Add(card);
+        UpdatePositions();
+    }
+
+    public void RemoveCardFromHand (Card card)
+    {
+        if (_playerHand.Contains(card))
+        {
+            _playerHand.Remove(card);
+            UpdatePositions();
+        }
     }
 
     public void UpdatePositions()
     {
-        for (int i = 0; i <= player_hand.Count; i++) {
-            player_hand[i].defaultZIndex = i + 1;
+        for (int i = 0; i < _playerHand.Count; i++) {
+            _playerHand[i].defaultZIndex = _playerHand.Count-i;
+            _playerHand[i].SetToDefaultZIndex();
             
             var x = CalculateCardPosition(i);
-            var new_position = new Vector2(x, hand_position_y);
-            var card = player_hand[i];
-            animateCardToPosition(card, new_position);
+            var new_position = new Vector2(x, _handPositionY);
+            var card = _playerHand[i];
+            AnimateCardToPosition(card, new_position);
         }
     }
 
-    private void animateCardToPosition(Card card, Vector2 new_position)
+    private void AnimateCardToPosition(Card card, Vector2 new_position)
     {
-
+        card.Position = new_position;
     }
 
-    public float CalculateCardPosition(int index)
+    private float CalculateCardPosition(int index)
     {
-        var x_offset = (player_hand.Count - 1) * card_width;
+        var x_offset = (_playerHand.Count * _cardWidth);
 
-        var x_position = screen_center_x + (index * card_width) - (x_offset / 2);
+        var x_position = _screenCentreX + (index * _cardWidth) - (x_offset/2);
 
         return x_position;
     }

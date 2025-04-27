@@ -1,20 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn2vjn6dwq8er"]
+[gd_scene load_steps=4 format=3 uid="uid://bn2vjn6dwq8er"]
 
-[ext_resource type="PackedScene" uid="uid://cad4ciie1n67x" path="res://src/card.tscn" id="1_eewff"]
+[ext_resource type="PackedScene" uid="uid://bbvhe2gbvxgpf" path="res://src/wolf.tscn" id="2_5q4o7"]
 [ext_resource type="PackedScene" uid="uid://byv3plgrvsm3u" path="res://src/player_hand.tscn" id="2_gh0ne"]
+[ext_resource type="PackedScene" uid="uid://c0c763ka1no8i" path="res://src/Enemy.tscn" id="3_5q4o7"]
 
 [node name="Main" type="Node2D"]
 
-[node name="card" parent="." instance=ExtResource("1_eewff")]
-offset_left = 325.0
-offset_top = 451.0
-offset_right = 525.0
-offset_bottom = 731.0
-
-[node name="card2" parent="." instance=ExtResource("1_eewff")]
-offset_left = 403.0
-offset_top = 454.0
-offset_right = 603.0
-offset_bottom = 734.0
-
 [node name="PlayerHand" parent="." instance=ExtResource("2_gh0ne")]
+
+[node name="Wolf" parent="." instance=ExtResource("2_5q4o7")]
+position = Vector2(273, 70)
+
+[node name="Enemy" parent="." instance=ExtResource("3_5q4o7")]
+position = Vector2(1422, 77)

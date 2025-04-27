@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://2vq4rpjvw2pi"]
+
+[ext_resource type="Texture2D" uid="uid://dnuc2flxcennx" path="res://assets/Cards/R1c.png" id="1_f6doq"]
+[ext_resource type="Script" uid="uid://xs2slagbave4" path="res://src/CardResource.cs" id="1_okj6w"]
+
+[resource]
+script = ExtResource("1_okj6w")
+CardName = "Scratch"
+CardCost = 1
+CardSrpite = ExtResource("1_f6doq")
+DamageValue = 5
+AttackValue = 0
+ResistanceValue = 0
+RageValue = 0
+CardDescription = ""
+metadata/_custom_type_script = "uid://xs2slagbave4"
