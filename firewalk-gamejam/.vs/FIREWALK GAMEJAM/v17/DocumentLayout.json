@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardResource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\CardResource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\playerhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\playerhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\mousebrain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\mousebrain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\cardmanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\cardmanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\cardresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\cardresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,43 +30,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CardResource.cs",
-              "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardResource.cs",
-              "RelativeDocumentMoniker": "src\\CardResource.cs",
-              "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardResource.cs",
-              "RelativeToolTip": "src\\CardResource.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAtAAAA",
+              "DocumentIndex": 4,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\Player.cs",
+              "RelativeDocumentMoniker": "src\\Player.cs",
+              "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\Player.cs",
+              "RelativeToolTip": "src\\Player.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAAwAQAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T04:26:41.559Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T13:13:24.025Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Card.cs",
-              "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\Card.cs",
-              "RelativeDocumentMoniker": "src\\Card.cs",
-              "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\Card.cs",
-              "RelativeToolTip": "src\\Card.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAmwCkAAAA1AAAA",
+              "DocumentIndex": 1,
+              "Title": "CardManger.cs",
+              "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardManger.cs",
+              "RelativeDocumentMoniker": "src\\CardManger.cs",
+              "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardManger.cs",
+              "RelativeToolTip": "src\\CardManger.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAowGoAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T12:54:05.392Z",
+              "WhenOpened": "2025-04-27T12:25:16.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Card.cs",
+              "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\Card.cs",
+              "RelativeDocumentMoniker": "src\\Card.cs",
+              "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\Card.cs",
+              "RelativeToolTip": "src\\Card.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAwAcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T12:54:05.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "PlayerHand.cs",
               "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\PlayerHand.cs",
               "RelativeDocumentMoniker": "src\\PlayerHand.cs",
               "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\PlayerHand.cs",
               "RelativeToolTip": "src\\PlayerHand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAQAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-26T15:54:14.984Z",
               "EditorCaption": ""
@@ -70,14 +85,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MouseBrain.cs",
-              "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\MouseBrain.cs",
-              "RelativeDocumentMoniker": "src\\MouseBrain.cs",
-              "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\MouseBrain.cs",
-              "RelativeToolTip": "src\\MouseBrain.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
+              "Title": "CardResource.cs",
+              "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardResource.cs",
+              "RelativeDocumentMoniker": "src\\CardResource.cs",
+              "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardResource.cs",
+              "RelativeToolTip": "src\\CardResource.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAkwCgAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T14:45:28.958Z"
+              "WhenOpened": "2025-04-27T04:26:41.559Z"
             }
           ]
         }

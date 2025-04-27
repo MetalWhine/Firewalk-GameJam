@@ -5,7 +5,7 @@ public partial class Card : Control
 {
     // Card Resources
     [Export]
-    private CardResource _cardResource;
+    public CardResource cardResource;
     private Label _cardNameLabel;
     private Label _cardDescriptionLabel;
     private Label _cardTypeLabel;
@@ -29,19 +29,19 @@ public partial class Card : Control
 
     // Provide signal when card is dropped
     [Signal]
-    public delegate void CardDroppedEventHandler();
+    public delegate void CardDroppedEventHandler(bool Valid, Card card);
 
     public override void _Ready()
     {
         _cardSprite = GetNode<Sprite2D>("Card Sprite");
-        _cardSprite.Texture = _cardResource.CardSrpite;
+        _cardSprite.Texture = cardResource.CardSrpite;
         
         _cardNameLabel = GetNode<Label>("Card Sprite/Name Label");
         _cardCostLabel = GetNode<Label>("Card Sprite/Cost Label");
         _cardDescriptionLabel = GetNode<Label>("Card Sprite/Description Label");
-        _cardTypeLabel = GetNode<Label>("Card Sprite/ Label");
+        _cardTypeLabel = GetNode<Label>("Card Sprite/Type Label");
 
-        GenerateCardDescription();
+        GenerateCardLabels();
 
         base._Ready();
     }
@@ -53,20 +53,32 @@ public partial class Card : Control
 
     private void GenerateCardLabels()
     {
-        _cardNameLabel.Text = _cardResource.CardName;
-        _cardCostLabel.Text = _cardResource.CardCost.ToString();
-        _cardTypeLabel.Text = _cardResource.cardType.ToString();
+        _cardNameLabel.Text = cardResource.CardName;
+        _cardCostLabel.Text = cardResource.CardCost.ToString();
+        _cardTypeLabel.Text = cardResource.cardType.ToString();
         GenerateCardDescription();
     }
 
     private void GenerateCardDescription()
     {
-        var Description = "";
-        if(_cardResource.DamageValue !=0)
+        string Description = "";
+        if(cardResource.DamageValue != 0)
         {
-            Description += " Deal {_cardResource.DamageValue} damage \n";
+            Description += $" Deal {cardResource.DamageValue} damage \n";
         }
-        _cardTypeLabel.Text = Description;
+        if (cardResource.AttackValue != 0)
+        {
+            Description += $" Change attack by {cardResource.DamageValue} \n";
+        }
+        if (cardResource.ResistanceValue != 0)
+        {
+            Description += $" Change resistance by {cardResource.ResistanceValue} \n";
+        }
+        if (cardResource.RageValue != 0)
+        {
+            Description += $" Change rage by {cardResource.RageValue} \n";
+        }
+        _cardDescriptionLabel.Text = Description;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -85,16 +97,12 @@ public partial class Card : Control
                 GlobalPosition = CustomLerpVector2(GlobalPosition, GetGlobalMousePosition() - (Size*Scale.X / 2), dragSpeed*(float)GetPhysicsProcessDeltaTime());
                 isDragging = true;
                 MouseBrain.current_card_held = this;
-                
             }
-            else
+            else if (MouseBrain.current_card_held == this)
             {
                 isDragging = false;
-                if(MouseBrain.current_card_held == this)
-                {
-                    MouseBrain.current_card_held = null;
-                }
-                EmitSignal(SignalName.CardDropped);
+                MouseBrain.current_card_held = null;
+                EmitSignal(SignalName.CardDropped, true, this);
             }
             return;
         }

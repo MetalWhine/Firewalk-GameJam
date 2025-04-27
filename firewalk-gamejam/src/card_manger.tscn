@@ -1,0 +1,16 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3s4quhu3tmfp"]
+
+[ext_resource type="Script" uid="uid://cu207yxgy6wsw" path="res://src/CardManger.cs" id="1_r6i5e"]
+[ext_resource type="Resource" uid="uid://bq6agxof8dnbr" path="res://src/Card Resources/BiteCard.tres" id="2_nunrf"]
+[ext_resource type="PackedScene" uid="uid://byv3plgrvsm3u" path="res://src/player_hand.tscn" id="2_r6i5e"]
+[ext_resource type="Resource" uid="uid://2vq4rpjvw2pi" path="res://src/Card Resources/ScratchCard.tres" id="2_rx0yw"]
+[ext_resource type="Resource" uid="uid://q1qu2pcn8lyy" path="res://src/Card Resources/HowlCard.tres" id="3_wfb4o"]
+[ext_resource type="Resource" uid="uid://cjeluqh8s5yft" path="res://src/Card Resources/SteakCard.tres" id="4_v8blo"]
+[ext_resource type="PackedScene" uid="uid://cad4ciie1n67x" path="res://src/card.tscn" id="6_454a2"]
+
+[node name="Card Manger" type="Node"]
+script = ExtResource("1_r6i5e")
+cardsResourcesList = Array[Object]([ExtResource("2_rx0yw"), ExtResource("2_nunrf"), ExtResource("4_v8blo"), ExtResource("3_wfb4o")])
+cardBase = ExtResource("6_454a2")
+
+[node name="PlayerHand" parent="." instance=ExtResource("2_r6i5e")]

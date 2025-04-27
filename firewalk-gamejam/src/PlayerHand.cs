@@ -7,51 +7,29 @@ public partial class PlayerHand : Node2D
 {
     private List<Card> _playerHand = new List<Card>();
     private float _screenCentreX = DisplayServer.WindowGetSize().X / 2;
-    private float _handPositionY = DisplayServer.WindowGetSize().Y * 0.75f;
+    private float _handPositionY = DisplayServer.WindowGetSize().Y * 0.6f;
     const float _cardWidth = 130f;
     const float _animationSpeed = 0.2f;
 
-    // Testing variables
-    private int _cardCount = 3;
-    [Export]
-    private PackedScene _cardScene { get; set; }
-
-
-    // Debugging
-    public override void _Ready()
+    public void _on_card_card_dropped(bool valid, Card card)
     {
-        for (int i = 0; i < _cardCount; i++) {
-            var NewCard = _cardScene.Instantiate<Card>();
-            AddCardToHand(NewCard);
-            NewCard.CardDropped += _on_card_card_dropped;
-            AddChild(NewCard);
-        }
-        base._Ready();
-    }
-
-    // Debugging
-    public override void _PhysicsProcess(double delta)
-    {
-        if (Input.IsActionJustPressed("ui_accept"))
+        if (valid && _playerHand.Contains(card))
         {
-            var NewCard = _cardScene.Instantiate<Card>();
-            AddCardToHand(NewCard);
-            AddChild(NewCard);
+            RemoveCardFromHand(card);
+            UpdatePositions();
         }
-
-
-        base._PhysicsProcess(delta);
-    }
-
-    public void _on_card_card_dropped()
-    {
-        UpdatePositions();
+        else
+        {
+            UpdatePositions();
+        }
     }
 
     public void AddCardToHand(Card card)
     {
         _playerHand.Add(card);
+        card.CardDropped += _on_card_card_dropped;
         UpdatePositions();
+        AddChild(card);
     }
 
     public void RemoveCardFromHand (Card card)

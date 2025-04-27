@@ -41,7 +41,7 @@ public partial class CardResource : Resource
     public enum CardType
     {
         Attack,
-        Resistance,
-        Rage,
+        Skill,
+        Calm,
     }
 }

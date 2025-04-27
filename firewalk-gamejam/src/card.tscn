@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://d0c8netu8eyu2" path="res://src/Card Theme.tres" id="1_cm0lg"]
 [ext_resource type="Script" uid="uid://capvk74es55x4" path="res://src/Card.cs" id="1_oj312"]
 [ext_resource type="Resource" uid="uid://2vq4rpjvw2pi" path="res://src/Card Resources/ScratchCard.tres" id="2_d8ann"]
-[ext_resource type="Texture2D" uid="uid://dnuc2flxcennx" path="res://assets/Cards/R1c.png" id="3_cm0lg"]
+[ext_resource type="Texture2D" uid="uid://b2mj5dp1jw7lw" path="res://assets/Cards/card_back.png" id="4_cm0lg"]
 
 [node name="card" type="Control"]
 custom_minimum_size = Vector2(200, 280)
@@ -26,7 +26,7 @@ _cardResource = ExtResource("2_d8ann")
 
 [node name="Card Sprite" type="Sprite2D" parent="."]
 position = Vector2(100, 140)
-texture = ExtResource("3_cm0lg")
+texture = ExtResource("4_cm0lg")
 
 [node name="Name Label" type="Label" parent="Card Sprite"]
 offset_left = -84.0
@@ -44,6 +44,7 @@ offset_right = 83.0
 offset_bottom = 105.0
 theme = ExtResource("1_cm0lg")
 text = "Description"
+autowrap_mode = 3
 
 [node name="Type Label" type="Label" parent="Card Sprite"]
 offset_left = -45.0

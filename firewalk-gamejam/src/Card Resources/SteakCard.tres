@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://cjeluqh8s5yft"]
+
+[ext_resource type="Script" uid="uid://xs2slagbave4" path="res://src/CardResource.cs" id="1_gtmc5"]
+[ext_resource type="Texture2D" uid="uid://bhm5ldfi4q6ka" path="res://assets/Cards/B1s.png" id="1_nfyks"]
+
+[resource]
+script = ExtResource("1_gtmc5")
+CardName = "Steak"
+CardCost = 1
+cardType = 1
+CardSrpite = ExtResource("1_nfyks")
+DamageValue = 0
+AttackValue = 0
+ResistanceValue = 5
+RageValue = 0
+CardDescription = ""
+metadata/_custom_type_script = "uid://xs2slagbave4"
