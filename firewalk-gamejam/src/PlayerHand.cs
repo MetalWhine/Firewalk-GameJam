@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
 
 public partial class PlayerHand : Node2D
 {
@@ -10,17 +9,34 @@ public partial class PlayerHand : Node2D
     private float _handPositionY = DisplayServer.WindowGetSize().Y * 0.6f;
     const float _cardWidth = 130f;
     const float _animationSpeed = 0.2f;
+    private CardManger _cardManager;
+
+    public override void _Ready()
+    {
+        _cardManager = GetParent<CardManger>();
+        base._Ready();
+    }
 
     public void _on_card_card_dropped(bool valid, Card card)
     {
         if (valid && _playerHand.Contains(card))
         {
             RemoveCardFromHand(card);
+            _cardManager.AddCardToDiscard(card);
             UpdatePositions();
         }
         else
         {
             UpdatePositions();
+        }
+    }
+
+    public void DiscardAllCards()
+    {
+        foreach (Card card in _playerHand)
+        {
+            _cardManager.AddCardToDiscard(card);
+            RemoveCardFromHand(card);
         }
     }
 

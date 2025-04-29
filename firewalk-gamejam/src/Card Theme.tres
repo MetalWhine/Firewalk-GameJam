@@ -6,4 +6,5 @@
 Label/colors/font_color = Color(0.983901, 0.967711, 0.971758, 1)
 Label/colors/font_outline_color = Color(0.109804, 0.054902, 0.121569, 1)
 Label/colors/font_shadow_color = Color(0.0901961, 0.0941176, 0.0862745, 0.27451)
+Label/constants/outline_size = 5
 Label/fonts/font = ExtResource("1_udcxy")

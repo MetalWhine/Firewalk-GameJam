@@ -1,9 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://cad4ciie1n67x"]
+[gd_scene load_steps=7 format=3 uid="uid://cad4ciie1n67x"]
 
 [ext_resource type="Theme" uid="uid://d0c8netu8eyu2" path="res://src/Card Theme.tres" id="1_cm0lg"]
 [ext_resource type="Script" uid="uid://capvk74es55x4" path="res://src/Card.cs" id="1_oj312"]
-[ext_resource type="Resource" uid="uid://2vq4rpjvw2pi" path="res://src/Card Resources/ScratchCard.tres" id="2_d8ann"]
 [ext_resource type="Texture2D" uid="uid://b2mj5dp1jw7lw" path="res://assets/Cards/card_back.png" id="4_cm0lg"]
+
+[sub_resource type="Animation" id="Animation_d8ann"]
+resource_name = "Card_ValidHover"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, -0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cm0lg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_er4au"]
+_data = {
+&"Card_ValidHover": SubResource("Animation_d8ann"),
+&"RESET": SubResource("Animation_cm0lg")
+}
 
 [node name="card" type="Control"]
 custom_minimum_size = Vector2(200, 280)
@@ -22,7 +59,6 @@ grow_vertical = 2
 pivot_offset = Vector2(100, 280)
 theme = ExtResource("1_cm0lg")
 script = ExtResource("1_oj312")
-_cardResource = ExtResource("2_d8ann")
 
 [node name="Card Sprite" type="Sprite2D" parent="."]
 position = Vector2(100, 140)
@@ -65,6 +101,11 @@ theme = ExtResource("1_cm0lg")
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_er4au")
+}
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -11,6 +11,7 @@ public partial class Card : Control
     private Label _cardTypeLabel;
     private Label _cardCostLabel;
     private Sprite2D _cardSprite;
+    private AnimationPlayer _animationPlayer;
 
     // Booleans to prevent multiple cards from being dragged
     bool isMouseOver = false;
@@ -26,10 +27,15 @@ public partial class Card : Control
 
     // Hand setting
     public int defaultZIndex = 1;
+    private float _validDropYPosition = DisplayServer.WindowGetSize().Y / 2;
+    private bool _isValidDropPosition = false;
+    private bool _isValidDrop = false;
 
     // Provide signal when card is dropped
     [Signal]
     public delegate void CardDroppedEventHandler(bool Valid, Card card);
+    [Signal]
+    public delegate void CardDroppedValidCheckEventHandler(Card card);
 
     public override void _Ready()
     {
@@ -41,6 +47,10 @@ public partial class Card : Control
         _cardDescriptionLabel = GetNode<Label>("Card Sprite/Description Label");
         _cardTypeLabel = GetNode<Label>("Card Sprite/Type Label");
 
+        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+
+        _animationPlayer.Stop();
+
         GenerateCardLabels();
 
         base._Ready();
@@ -49,36 +59,6 @@ public partial class Card : Control
     public void SetToDefaultZIndex()
     {
        ZIndex = defaultZIndex;
-    }
-
-    private void GenerateCardLabels()
-    {
-        _cardNameLabel.Text = cardResource.CardName;
-        _cardCostLabel.Text = cardResource.CardCost.ToString();
-        _cardTypeLabel.Text = cardResource.cardType.ToString();
-        GenerateCardDescription();
-    }
-
-    private void GenerateCardDescription()
-    {
-        string Description = "";
-        if(cardResource.DamageValue != 0)
-        {
-            Description += $" Deal {cardResource.DamageValue} damage \n";
-        }
-        if (cardResource.AttackValue != 0)
-        {
-            Description += $" Change attack by {cardResource.DamageValue} \n";
-        }
-        if (cardResource.ResistanceValue != 0)
-        {
-            Description += $" Change resistance by {cardResource.ResistanceValue} \n";
-        }
-        if (cardResource.RageValue != 0)
-        {
-            Description += $" Change rage by {cardResource.RageValue} \n";
-        }
-        _cardDescriptionLabel.Text = Description;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -97,17 +77,62 @@ public partial class Card : Control
                 GlobalPosition = CustomLerpVector2(GlobalPosition, GetGlobalMousePosition() - (Size*Scale.X / 2), dragSpeed*(float)GetPhysicsProcessDeltaTime());
                 isDragging = true;
                 MouseBrain.current_card_held = this;
+                if (Position.Y <= _validDropYPosition && _isValidDropPosition == false)
+                {
+                    _isValidDropPosition = true;
+                    _animationPlayer.Play("Card_ValidHover");
+                }
+                else if (Position.Y > _validDropYPosition && _isValidDropPosition == true)
+                {
+                    _isValidDropPosition = false;
+                    _animationPlayer.Stop();
+                }
             }
             else if (MouseBrain.current_card_held == this)
             {
                 isDragging = false;
                 MouseBrain.current_card_held = null;
-                EmitSignal(SignalName.CardDropped, true, this);
+                EmitSignal(SignalName.CardDropped, _isValidDropPosition, this);
+                _animationPlayer.Stop();
+                if (_isValidDropPosition)
+                {
+                    QueueFree();
+                }
             }
             return;
         }
 
 
+    }
+
+    private void GenerateCardLabels()
+    {
+        _cardNameLabel.Text = cardResource.CardName;
+        _cardCostLabel.Text = cardResource.CardCost.ToString();
+        _cardTypeLabel.Text = cardResource.cardType.ToString();
+        GenerateCardDescription();
+    }
+
+    private void GenerateCardDescription()
+    {
+        string Description = "";
+        if (cardResource.DamageValue != 0)
+        {
+            Description += $" Deal {cardResource.DamageValue} damage \n";
+        }
+        if (cardResource.AttackValue != 0)
+        {
+            Description += $" Change attack by {cardResource.DamageValue} \n";
+        }
+        if (cardResource.ResistanceValue != 0)
+        {
+            Description += $" Change resistance by {cardResource.ResistanceValue} \n";
+        }
+        if (cardResource.RageValue != 0)
+        {
+            Description += $" Change rage by {cardResource.RageValue} \n";
+        }
+        _cardDescriptionLabel.Text = Description;
     }
 
     private void zoom_logic()

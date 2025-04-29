@@ -7,9 +7,9 @@
 [node name="Main" type="Node2D"]
 
 [node name="Wolf" parent="." instance=ExtResource("2_5q4o7")]
-position = Vector2(94, 35)
+position = Vector2(181, 7)
 
 [node name="Enemy" parent="." instance=ExtResource("3_5q4o7")]
-position = Vector2(934, 39)
+position = Vector2(867, 0)
 
 [node name="Card Manger" parent="." instance=ExtResource("4_3cfgd")]

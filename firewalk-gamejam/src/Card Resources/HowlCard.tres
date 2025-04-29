@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_5dksh")
-CardName = ""
+CardName = "Howl"
 CardCost = 2
 cardType = 2
 CardSrpite = ExtResource("1_0o83x")

@@ -10,7 +10,7 @@ public partial class Player : Node
     public int currentEnergy { get; set; }
     public int maxEnergy { get; set; } = StartingMaxEnergy;
     public int rage { get; set; } = 0;
-    public int maxRage { get; set; } = StartingMaxEnergy;
+    public int maxRage { get; set; } = StartingMaxRage;
     #endregion
 
     #region CARD MODIFIERES
