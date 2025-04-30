@@ -2,8 +2,11 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class CardManger : Node
+public partial class CardManager : Node
 {
+    public int currentEnergy { get; set; }
+    public int maxEnergy { get; set; } = 3;
+
     [Export]
     public CardResource[] cardsResourcesList;
 
@@ -28,6 +31,7 @@ public partial class CardManger : Node
         _discardLabel = GetNode<Label>("Discard View/Discard Count Label");
         playerHand = GetNode<PlayerHand>("PlayerHand");
         GenerateStartingDeck();
+        ResetEnergy();
         base._Ready();
     }
 
@@ -110,6 +114,7 @@ public partial class CardManger : Node
     {
         _deckCountLabel.Text = cardsInDeck.Count.ToString();
         _discardLabel.Text = cardsInDiscard.Count.ToString();
+        _energyLabel.Text = currentEnergy.ToString() + "/" + maxEnergy.ToString();
     }
 
     public void AddCardToHand()
@@ -143,6 +148,27 @@ public partial class CardManger : Node
             AddCardToHand();
         }
         base._Process(delta);
+    }
+
+    public void CheckValidity(Card card)
+    {
+        int energyCost = card.cardResource.CardCost;
+        if (currentEnergy >= energyCost)
+        {
+            currentEnergy -= energyCost;
+            UpdateLabels();
+            card.ValidityCheckReceiver(true);
+        }
+        else
+        {
+            card.ValidityCheckReceiver(false);
+        }
+    }
+
+    public void ResetEnergy()
+    {
+        currentEnergy = maxEnergy;
+        UpdateLabels();
     }
 }
 

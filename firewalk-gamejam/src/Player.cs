@@ -4,13 +4,14 @@ using System;
 public partial class Player : Node
 {
     private const int StartingMaxEnergy = 3;
+
     private const int StartingMaxRage = 50;
 
     #region PLAYER VARIABLES
-    public int currentEnergy { get; set; }
     public int maxEnergy { get; set; } = StartingMaxEnergy;
     public int rage { get; set; } = 0;
     public int maxRage { get; set; } = StartingMaxRage;
+    public int maxHandDrawSize { get; set; } = 6;
     #endregion
 
     #region CARD MODIFIERES
@@ -38,8 +39,6 @@ public partial class Player : Node
 
     public void InitializePlayer()
     {
-        maxEnergy = StartingMaxEnergy;
-        ResetEnergy();
         ResetModifiers();
         maxRage = StartingMaxRage;
         rage = 0;
@@ -48,10 +47,6 @@ public partial class Player : Node
         _rageLabel.Text = $"Rage: {rage}/{maxRage}";
         double temp = maxRage / 10;
         _rageSlider.TickCount = (int)Math.Floor(temp);
-    }
-
-    public void ResetEnergy() {         
-        currentEnergy = maxEnergy;
     }
 
     public void ResetModifiers()

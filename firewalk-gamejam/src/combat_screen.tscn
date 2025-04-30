@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5a5qdac5db88"]
+
+[ext_resource type="Script" uid="uid://kh4mh3bjk083" path="res://src/CombatManager.cs" id="1_37jj1"]
+[ext_resource type="PackedScene" uid="uid://b3s4quhu3tmfp" path="res://src/card_manager.tscn" id="1_fipv5"]
+[ext_resource type="PackedScene" uid="uid://c0c763ka1no8i" path="res://src/Enemy.tscn" id="2_quyvt"]
+[ext_resource type="PackedScene" uid="uid://bbvhe2gbvxgpf" path="res://src/Player.tscn" id="3_i4b6q"]
+
+[node name="CombatScreen" type="Node"]
+script = ExtResource("1_37jj1")
+
+[node name="Card Manager" parent="." instance=ExtResource("1_fipv5")]
+
+[node name="Enemy" parent="." instance=ExtResource("2_quyvt")]
+position = Vector2(883, 20)
+
+[node name="Player" parent="." instance=ExtResource("3_i4b6q")]
+position = Vector2(138, 19)

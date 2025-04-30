@@ -6,29 +6,30 @@ public partial class PlayerHand : Node2D
 {
     private List<Card> _playerHand = new List<Card>();
     private float _screenCentreX = DisplayServer.WindowGetSize().X / 2;
-    private float _handPositionY = DisplayServer.WindowGetSize().Y * 0.6f;
+    private float _handPositionY = DisplayServer.WindowGetSize().Y * 0.62f;
     const float _cardWidth = 130f;
     const float _animationSpeed = 0.2f;
-    private CardManger _cardManager;
+    private CardManager _cardManager;
 
     public override void _Ready()
     {
-        _cardManager = GetParent<CardManger>();
+        _cardManager = GetParent<CardManager>();
         base._Ready();
     }
 
-    public void _on_card_card_dropped(bool valid, Card card)
+    public void CardDroppedValidityCheck(Card card)
+    {
+        _cardManager.CheckValidity(card);
+    }
+
+    public void OnCardDropped(bool valid, Card card)
     {
         if (valid && _playerHand.Contains(card))
         {
             RemoveCardFromHand(card);
             _cardManager.AddCardToDiscard(card);
-            UpdatePositions();
         }
-        else
-        {
-            UpdatePositions();
-        }
+        UpdatePositions();
     }
 
     public void DiscardAllCards()
@@ -43,7 +44,8 @@ public partial class PlayerHand : Node2D
     public void AddCardToHand(Card card)
     {
         _playerHand.Add(card);
-        card.CardDropped += _on_card_card_dropped;
+        card.CardDropped += OnCardDropped;
+        card.CardDroppedValidCheck += CardDroppedValidityCheck;
         UpdatePositions();
         AddChild(card);
     }

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn2vjn6dwq8er"]
 
-[ext_resource type="PackedScene" uid="uid://bbvhe2gbvxgpf" path="res://src/wolf.tscn" id="2_5q4o7"]
+[ext_resource type="PackedScene" uid="uid://bbvhe2gbvxgpf" path="res://src/Player.tscn" id="2_5q4o7"]
 [ext_resource type="PackedScene" uid="uid://c0c763ka1no8i" path="res://src/Enemy.tscn" id="3_5q4o7"]
-[ext_resource type="PackedScene" uid="uid://b3s4quhu3tmfp" path="res://src/card_manger.tscn" id="4_3cfgd"]
+[ext_resource type="PackedScene" uid="uid://b3s4quhu3tmfp" path="res://src/card_manager.tscn" id="4_3cfgd"]
 
 [node name="Main" type="Node2D"]
 
@@ -12,4 +12,4 @@ position = Vector2(181, 7)
 [node name="Enemy" parent="." instance=ExtResource("3_5q4o7")]
 position = Vector2(867, 0)
 
-[node name="Card Manger" parent="." instance=ExtResource("4_3cfgd")]
+[node name="Card Manager" parent="." instance=ExtResource("4_3cfgd")]
