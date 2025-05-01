@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://b0llv4magi1jw"]
+
+[ext_resource type="Texture2D" uid="uid://dow5iehtig70s" path="res://icon.svg" id="1_x6np5"]
+[ext_resource type="Script" uid="uid://dwx0dsuh4feta" path="res://src/EnemyResource.cs" id="2_mkpb1"]
+
+[resource]
+script = ExtResource("2_mkpb1")
+EnemyName = "Pig"
+MaxEnemyHealth = 30
+EnemyRageInflict = 3
+EnemyIntentsArray = null
+EnemySprite = ExtResource("1_x6np5")
+enemyTag = 0
+metadata/_custom_type_script = "uid://dwx0dsuh4feta"

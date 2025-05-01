@@ -15,3 +15,42 @@ position = Vector2(883, 20)
 
 [node name="Player" parent="." instance=ExtResource("3_i4b6q")]
 position = Vector2(138, 19)
+
+[node name="Next Turn Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -45.0
+offset_right = 84.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Turn"
+
+[node name="Attack Label" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 417.0
+offset_right = 140.0
+offset_bottom = 447.0
+text = "Str: 0"
+
+[node name="Resistance Label" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 448.0
+offset_right = 140.0
+offset_bottom = 478.0
+text = "Res: 0"
+
+[node name="Turn Label" type="Label" parent="."]
+offset_left = 559.0
+offset_top = 283.0
+offset_right = 724.0
+offset_bottom = 313.0
+text = "Turn: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="Next Turn Button" to="." method="NextTurn"]

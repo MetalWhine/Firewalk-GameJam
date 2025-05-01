@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://b4js5x1pxxpb1"]
+
+[ext_resource type="Script" uid="uid://dwx0dsuh4feta" path="res://src/EnemyResource.cs" id="1_oemu2"]
+[ext_resource type="Texture2D" uid="uid://dow5iehtig70s" path="res://icon.svg" id="1_q82gj"]
+
+[resource]
+script = ExtResource("1_oemu2")
+EnemyName = "Sheep"
+MaxEnemyHealth = 20
+EnemyRageInflict = 0
+EnemyIntentsArray = null
+EnemySprite = ExtResource("1_q82gj")
+metadata/_custom_type_script = "uid://dwx0dsuh4feta"

@@ -3,15 +3,20 @@ using System;
 
 public partial class Player : Node
 {
-    private const int StartingMaxEnergy = 3;
-
-    private const int StartingMaxRage = 50;
-
     #region PLAYER VARIABLES
-    public int maxEnergy { get; set; } = StartingMaxEnergy;
-    public int rage { get; set; } = 0;
-    public int maxRage { get; set; } = StartingMaxRage;
-    public int maxHandDrawSize { get; set; } = 6;
+    // Permanent variables
+    [Export]
+    public int StartingMaxEnergy = 3;
+    [Export]
+    private int StartingMaxRage = 50;
+    [Export]
+    private int StartingMaxHandDrawSize = 5;
+
+    // Changeable variables
+    public int maxEnergy { get; set; }
+    public int rage { get; set; }
+    public int maxRage { get; set; }
+    public int maxHandDrawSize { get; set; }
     #endregion
 
     #region CARD MODIFIERES
@@ -33,7 +38,6 @@ public partial class Player : Node
     {
         _rageLabel = GetNode<Label>("Rage Label");
         _rageSlider = GetNode<HSlider>("Rage Meter");
-        InitializePlayer();
         base._Ready();
     }
 
@@ -41,12 +45,10 @@ public partial class Player : Node
     {
         ResetModifiers();
         maxRage = StartingMaxRage;
+        maxEnergy = StartingMaxEnergy;
+        maxHandDrawSize = StartingMaxHandDrawSize;
         rage = 0;
-        _rageSlider.MaxValue = maxRage;
-        _rageSlider.Value = rage;
-        _rageLabel.Text = $"Rage: {rage}/{maxRage}";
-        double temp = maxRage / 10;
-        _rageSlider.TickCount = (int)Math.Floor(temp);
+        UpdateLabels();
     }
 
     public void ResetModifiers()
@@ -68,10 +70,21 @@ public partial class Player : Node
     public void IncreaseRage(int rageIncreaseAmount)
     {
         rage += rageIncreaseAmount;
+        if(rage < 0) rage = 0;
         if (rage >= maxRage)
         {
             rage = 0;
             EmitSignal(SignalName.GameOver);
         }
+        UpdateLabels();
+    }
+
+    private void UpdateLabels()
+    {
+        _rageSlider.MaxValue = maxRage;
+        _rageSlider.Value = rage;
+        _rageLabel.Text = $"Rage: {rage}/{maxRage}";
+        double temp = maxRage / 10;
+        _rageSlider.TickCount = (int)Math.Floor(temp);
     }
 }

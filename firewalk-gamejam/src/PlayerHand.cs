@@ -26,8 +26,7 @@ public partial class PlayerHand : Node2D
     {
         if (valid && _playerHand.Contains(card))
         {
-            RemoveCardFromHand(card);
-            _cardManager.AddCardToDiscard(card);
+            PlayCardFromHand(card);
         }
         UpdatePositions();
     }
@@ -37,8 +36,9 @@ public partial class PlayerHand : Node2D
         foreach (Card card in _playerHand)
         {
             _cardManager.AddCardToDiscard(card);
-            RemoveCardFromHand(card);
+            card.QueueFree();
         }
+        _playerHand.Clear();
     }
 
     public void AddCardToHand(Card card)
@@ -50,12 +50,13 @@ public partial class PlayerHand : Node2D
         AddChild(card);
     }
 
-    public void RemoveCardFromHand (Card card)
+    public void PlayCardFromHand (Card card)
     {
         if (_playerHand.Contains(card))
         {
+            _cardManager.PlayCard(card);
+            _cardManager.AddCardToDiscard(card);
             _playerHand.Remove(card);
-            UpdatePositions();
         }
     }
 
@@ -79,7 +80,7 @@ public partial class PlayerHand : Node2D
 
     private float CalculateCardPosition(int index)
     {
-        var x_offset = (_playerHand.Count * _cardWidth);
+        var x_offset = ((_playerHand.Count+0.5f) * _cardWidth);
 
         var x_position = _screenCentreX + (index * _cardWidth) - (x_offset/2);
 

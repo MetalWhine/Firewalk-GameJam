@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class CardManager : Node
 {
     public int currentEnergy { get; set; }
-    public int maxEnergy { get; set; } = 3;
+    public int maxEnergy { get; set; }
 
     [Export]
     public CardResource[] cardsResourcesList;
@@ -23,6 +23,8 @@ public partial class CardManager : Node
     private Label _energyLabel;
     private Label _discardLabel;
     #endregion
+    [Signal]
+    public delegate void CardPlayedEventHandler(Card card);
 
     public override void _Ready()
     {
@@ -30,8 +32,6 @@ public partial class CardManager : Node
         _energyLabel = GetNode<Label>("Energy View/Energy Label");
         _discardLabel = GetNode<Label>("Discard View/Discard Count Label");
         playerHand = GetNode<PlayerHand>("PlayerHand");
-        GenerateStartingDeck();
-        ResetEnergy();
         base._Ready();
     }
 
@@ -104,6 +104,11 @@ public partial class CardManager : Node
         UpdateLabels();
     }
 
+    public void PlayCard(Card card)
+    {
+        EmitSignal(SignalName.CardPlayed, card);
+    }
+
     public void AddCardToDeck(Card card)
     {
         cardsInDeck.Add(card);
@@ -117,37 +122,32 @@ public partial class CardManager : Node
         _energyLabel.Text = currentEnergy.ToString() + "/" + maxEnergy.ToString();
     }
 
-    public void AddCardToHand()
+    public void AddCardToHand(int count)
     {
-        if (cardsInDeck.Count > 0)
+        while (count > 0)
         {
-            playerHand.AddCardToHand(cardsInDeck[0]);
-            cardsInDeck.RemoveAt(0);
-        }
-        else
-        {
-            if(cardsInDiscard.Count > 0)
+            count--;
+            if (cardsInDeck.Count > 0)
             {
-                foreach (Card card in cardsInDiscard)
-                {
-                    cardsInDeck.Add(card);
-                }
-                cardsInDeck = ShuffleCards(cardsInDeck);
-                cardsInDiscard.Clear();
                 playerHand.AddCardToHand(cardsInDeck[0]);
                 cardsInDeck.RemoveAt(0);
             }
+            else
+            {
+                if (cardsInDiscard.Count > 0)
+                {
+                    foreach (Card card in cardsInDiscard)
+                    {
+                        cardsInDeck.Add(card);
+                    }
+                    cardsInDeck = ShuffleCards(cardsInDeck);
+                    cardsInDiscard.Clear();
+                    playerHand.AddCardToHand(cardsInDeck[0]);
+                    cardsInDeck.RemoveAt(0);
+                }
+            }
+            UpdateLabels();
         }
-        UpdateLabels();
-    }
-
-    public override void _Process(double delta)
-    {
-        if (Input.IsActionJustPressed("ui_accept"))
-        {
-            AddCardToHand();
-        }
-        base._Process(delta);
     }
 
     public void CheckValidity(Card card)
