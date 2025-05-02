@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=7 format=3 uid="uid://ccc0cvxvaw0ob"]
+
+[ext_resource type="Texture2D" uid="uid://w00knkldsdq7" path="res://assets/Enemies/mole_greed_.png" id="1_4kl70"]
+[ext_resource type="Script" uid="uid://dwx0dsuh4feta" path="res://src/EnemyResource.cs" id="1_b5oht"]
+[ext_resource type="Resource" uid="uid://dfxr6lxebv128" path="res://src/Enemy Intents/BasicAttack.tres" id="1_f1gqh"]
+[ext_resource type="Resource" uid="uid://bev47fud0p04i" path="res://src/Enemy Intents/MediumAttack.tres" id="2_pen47"]
+[ext_resource type="Resource" uid="uid://bjb1pcd4gmd7s" path="res://src/Enemy Intents/BigAttack.tres" id="3_ny7u8"]
+[ext_resource type="Resource" uid="uid://b30tv7uqybkh6" path="res://src/Enemy Intents/BasicHeal.tres" id="4_nh8h6"]
+
+[resource]
+script = ExtResource("1_b5oht")
+EnemyName = "Mole King"
+MaxEnemyHealth = 60
+EnemyPower = 8
+EnemyIntentsArray = Array[Object]([ExtResource("1_f1gqh"), ExtResource("1_f1gqh"), ExtResource("2_pen47"), ExtResource("3_ny7u8"), ExtResource("4_nh8h6")])
+EnemySprite = ExtResource("1_4kl70")
+enemyTag = 2
+metadata/_custom_type_script = "uid://dwx0dsuh4feta"

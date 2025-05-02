@@ -59,6 +59,7 @@ grow_vertical = 2
 pivot_offset = Vector2(100, 280)
 theme = ExtResource("1_cm0lg")
 script = ExtResource("1_oj312")
+_zoomMultiplier = 1.2
 
 [node name="Card Sprite" type="Sprite2D" parent="."]
 position = Vector2(100, 140)

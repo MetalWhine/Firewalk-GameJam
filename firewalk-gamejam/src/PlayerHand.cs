@@ -6,29 +6,29 @@ public partial class PlayerHand : Node2D
 {
     private List<Card> _playerHand = new List<Card>();
     private float _screenCentreX = DisplayServer.WindowGetSize().X / 2;
-    private float _handPositionY = DisplayServer.WindowGetSize().Y * 0.6f;
+    private float _handPositionY = DisplayServer.WindowGetSize().Y * 0.62f;
     const float _cardWidth = 130f;
     const float _animationSpeed = 0.2f;
-    private CardManger _cardManager;
+    private CardManager _cardManager;
 
     public override void _Ready()
     {
-        _cardManager = GetParent<CardManger>();
+        _cardManager = GetParent<CardManager>();
         base._Ready();
     }
 
-    public void _on_card_card_dropped(bool valid, Card card)
+    public void CardDroppedValidityCheck(Card card)
+    {
+        _cardManager.CheckValidity(card);
+    }
+
+    public void OnCardDropped(bool valid, Card card)
     {
         if (valid && _playerHand.Contains(card))
         {
-            RemoveCardFromHand(card);
-            _cardManager.AddCardToDiscard(card);
-            UpdatePositions();
+            PlayCardFromHand(card);
         }
-        else
-        {
-            UpdatePositions();
-        }
+        UpdatePositions();
     }
 
     public void DiscardAllCards()
@@ -36,24 +36,27 @@ public partial class PlayerHand : Node2D
         foreach (Card card in _playerHand)
         {
             _cardManager.AddCardToDiscard(card);
-            RemoveCardFromHand(card);
+            card.QueueFree();
         }
+        _playerHand.Clear();
     }
 
     public void AddCardToHand(Card card)
     {
         _playerHand.Add(card);
-        card.CardDropped += _on_card_card_dropped;
+        card.CardDropped += OnCardDropped;
+        card.CardDroppedValidCheck += CardDroppedValidityCheck;
         UpdatePositions();
         AddChild(card);
     }
 
-    public void RemoveCardFromHand (Card card)
+    public void PlayCardFromHand (Card card)
     {
         if (_playerHand.Contains(card))
         {
+            _cardManager.PlayCard(card);
+            _cardManager.AddCardToDiscard(card);
             _playerHand.Remove(card);
-            UpdatePositions();
         }
     }
 
@@ -77,7 +80,7 @@ public partial class PlayerHand : Node2D
 
     private float CalculateCardPosition(int index)
     {
-        var x_offset = (_playerHand.Count * _cardWidth);
+        var x_offset = ((_playerHand.Count+0.5f) * _cardWidth);
 
         var x_position = _screenCentreX + (index * _cardWidth) - (x_offset/2);
 

@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5a5qdac5db88"]
+
+[ext_resource type="Script" uid="uid://kh4mh3bjk083" path="res://src/CombatManager.cs" id="1_37jj1"]
+[ext_resource type="PackedScene" uid="uid://b3s4quhu3tmfp" path="res://src/card_manager.tscn" id="1_fipv5"]
+[ext_resource type="Texture2D" uid="uid://j580xwt5wplt" path="res://assets/Forest Background.png" id="2_dxd76"]
+[ext_resource type="PackedScene" uid="uid://c0c763ka1no8i" path="res://src/Enemy.tscn" id="2_quyvt"]
+[ext_resource type="PackedScene" uid="uid://bbvhe2gbvxgpf" path="res://src/Player.tscn" id="3_i4b6q"]
+[ext_resource type="Texture2D" uid="uid://b14qhegctuyu4" path="res://assets/UI books & more.png" id="3_lwqlr"]
+[ext_resource type="Theme" uid="uid://d0c8netu8eyu2" path="res://src/Card Theme.tres" id="4_h80tb"]
+[ext_resource type="Texture2D" uid="uid://darsl8qm38dfc" path="res://assets/GUI.png" id="4_hliew"]
+
+[node name="CombatScreen" type="Node"]
+script = ExtResource("1_37jj1")
+
+[node name="Combat UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="Combat UI"]
+position = Vector2(-57, -413)
+scale = Vector2(4.53333, 4.53333)
+texture = ExtResource("2_dxd76")
+centered = false
+
+[node name="Foreground" type="Sprite2D" parent="Combat UI"]
+position = Vector2(639, 587)
+rotation = 1.57079
+scale = Vector2(11.4533, 20.0899)
+texture = ExtResource("3_lwqlr")
+region_enabled = true
+region_rect = Rect2(656, 16, 48, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="Combat UI"]
+position = Vector2(639, 303)
+scale = Vector2(2.96185, 1.59072)
+texture = ExtResource("4_hliew")
+region_enabled = true
+region_rect = Rect2(2, 34, 44, 44)
+
+[node name="Next Turn Button" type="Button" parent="Combat UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -45.0
+offset_right = 84.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Turn"
+
+[node name="Attack Label" type="Label" parent="Combat UI"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 417.0
+offset_right = 222.0
+offset_bottom = 447.0
+theme = ExtResource("4_h80tb")
+text = "Atk: 0"
+
+[node name="Resistance Label" type="Label" parent="Combat UI"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 448.0
+offset_right = 222.0
+offset_bottom = 478.0
+theme = ExtResource("4_h80tb")
+text = "Res: 0"
+
+[node name="Turn Label" type="Label" parent="Combat UI"]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 283.0
+offset_right = 724.0
+offset_bottom = 313.0
+theme = ExtResource("4_h80tb")
+text = "Turn: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card Manager" parent="." instance=ExtResource("1_fipv5")]
+
+[node name="Enemy" parent="." instance=ExtResource("2_quyvt")]
+position = Vector2(895, 46)
+
+[node name="Player" parent="." instance=ExtResource("3_i4b6q")]
+position = Vector2(149, 53)
+
+[connection signal="button_down" from="Combat UI/Next Turn Button" to="." method="NextTurn"]

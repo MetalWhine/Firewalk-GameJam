@@ -32,10 +32,6 @@ public partial class CardResource : Resource
     // Modifiers of rage
     [Export]
     public int RageValue { get; set; }
-
-    // Describes cards
-    [Export]
-    public string CardDescription { get; set; }
     #endregion
 
     public enum CardType

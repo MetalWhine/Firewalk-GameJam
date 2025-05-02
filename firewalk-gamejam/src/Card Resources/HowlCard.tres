@@ -12,6 +12,6 @@ CardSrpite = ExtResource("1_0o83x")
 DamageValue = 0
 AttackValue = 0
 ResistanceValue = 0
-RageValue = -9
+RageValue = -5
 CardDescription = ""
 metadata/_custom_type_script = "uid://xs2slagbave4"

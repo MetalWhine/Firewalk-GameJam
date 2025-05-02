@@ -1,18 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0c763ka1no8i"]
+[gd_scene load_steps=9 format=3 uid="uid://c0c763ka1no8i"]
 
-[ext_resource type="Texture2D" uid="uid://bhm5ldfi4q6ka" path="res://assets/Cards/B1s.png" id="1_7rj6k"]
+[ext_resource type="Script" uid="uid://v0bogkme7otm" path="res://src/Enemy.cs" id="1_rnh5k"]
+[ext_resource type="Resource" uid="uid://b0llv4magi1jw" path="res://src/Enemy Resources/Pig.tres" id="2_rfgv3"]
+[ext_resource type="Resource" uid="uid://b4js5x1pxxpb1" path="res://src/Enemy Resources/Sheep.tres" id="3_v8ubm"]
+[ext_resource type="Resource" uid="uid://ccc0cvxvaw0ob" path="res://src/Enemy Resources/MoleKing.tres" id="4_kar7b"]
+[ext_resource type="Resource" uid="uid://t4nnd4celfy3" path="res://src/Enemy Resources/Mole.tres" id="5_jwvfg"]
+[ext_resource type="Texture2D" uid="uid://dow5iehtig70s" path="res://icon.svg" id="6_kar7b"]
+[ext_resource type="Theme" uid="uid://bx1mr30ivyfab" path="res://src/Enemy Theme.tres" id="7_jwvfg"]
+[ext_resource type="Texture2D" uid="uid://darsl8qm38dfc" path="res://assets/GUI.png" id="8_wbws4"]
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_rnh5k")
+possibleEnemyResources = Array[Object]([ExtResource("2_rfgv3"), ExtResource("3_v8ubm"), ExtResource("5_jwvfg"), ExtResource("4_kar7b")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 43)
-texture = ExtResource("1_7rj6k")
-centered = false
+position = Vector2(99, 151)
+texture = ExtResource("6_kar7b")
+
+[node name="Intent Label Background2" type="Sprite2D" parent="."]
+position = Vector2(95, 25)
+scale = Vector2(4.71493, 1.62357)
+texture = ExtResource("8_wbws4")
+region_enabled = true
+region_rect = Rect2(49, 97, 30, 30)
 
 [node name="Health Meter" type="HSlider" parent="."]
-offset_top = 23.0
+offset_top = 46.0
 offset_right = 198.0
-offset_bottom = 39.0
+offset_bottom = 62.0
+theme = ExtResource("7_jwvfg")
 rounded = true
 editable = false
 scrollable = false
@@ -20,17 +36,42 @@ tick_count = 4
 ticks_on_borders = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Health" type="Label" parent="."]
+[node name="Health Label" type="Label" parent="."]
+offset_top = 23.0
 offset_right = 194.0
-offset_bottom = 23.0
+offset_bottom = 46.0
+theme = ExtResource("7_jwvfg")
 text = "Health: 0/0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 326.0
-offset_right = 186.0
-offset_bottom = 349.0
+[node name="Name Label" type="Label" parent="."]
+offset_right = 194.0
+offset_bottom = 23.0
+theme = ExtResource("7_jwvfg")
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Intent Label Background" type="Sprite2D" parent="."]
+position = Vector2(100.556, 248.776)
+scale = Vector2(4.43985, 1.86098)
+texture = ExtResource("8_wbws4")
+region_enabled = true
+region_rect = Rect2(0, 96, 48, 32)
+
+[node name="Intent Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.5565
+offset_top = 236.776
+offset_right = 191.556
+offset_bottom = 259.776
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_jwvfg")
 text = "Intent: +0 Rage"
 horizontal_alignment = 1

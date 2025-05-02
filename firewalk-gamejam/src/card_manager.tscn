@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b3s4quhu3tmfp"]
 
-[ext_resource type="Script" uid="uid://cu207yxgy6wsw" path="res://src/CardManger.cs" id="1_r6i5e"]
+[ext_resource type="Script" uid="uid://cu207yxgy6wsw" path="res://src/CardManager.cs" id="1_r6i5e"]
 [ext_resource type="Resource" uid="uid://bq6agxof8dnbr" path="res://src/Card Resources/BiteCard.tres" id="2_nunrf"]
 [ext_resource type="PackedScene" uid="uid://byv3plgrvsm3u" path="res://src/player_hand.tscn" id="2_r6i5e"]
 [ext_resource type="Resource" uid="uid://2vq4rpjvw2pi" path="res://src/Card Resources/ScratchCard.tres" id="2_rx0yw"]
@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://b2mj5dp1jw7lw" path="res://assets/Cards/card_back.png" id="8_wfb4o"]
 [ext_resource type="Theme" uid="uid://d0c8netu8eyu2" path="res://src/Card Theme.tres" id="9_1cx5a"]
 [ext_resource type="FontFile" uid="uid://78dwrw8sofb6" path="res://assets/Tiny5-Regular.ttf" id="9_v8blo"]
-[ext_resource type="Texture2D" uid="uid://dow5iehtig70s" path="res://icon.svg" id="10_454a2"]
 [ext_resource type="Texture2D" uid="uid://bi2aop6prykhj" path="res://assets/Cards/Card Base.svg" id="11_q0fq0"]
+[ext_resource type="Texture2D" uid="uid://b14qhegctuyu4" path="res://assets/UI books & more.png" id="11_yglo0"]
 
-[node name="Card Manger" type="Node"]
+[node name="Card Manager" type="Node"]
 script = ExtResource("1_r6i5e")
 cardsResourcesList = Array[Object]([ExtResource("2_rx0yw"), ExtResource("2_nunrf"), ExtResource("4_v8blo"), ExtResource("3_wfb4o")])
 cardBase = ExtResource("6_454a2")
@@ -21,7 +21,7 @@ cardBase = ExtResource("6_454a2")
 [node name="PlayerHand" parent="." instance=ExtResource("2_r6i5e")]
 
 [node name="Deck View" type="Sprite2D" parent="."]
-position = Vector2(1148, 601)
+position = Vector2(1089, 601)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("8_wfb4o")
 
@@ -31,14 +31,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -154.286
-offset_right = -58.0
-offset_bottom = -106.286
+offset_left = -181.538
+offset_top = -206.154
+offset_right = -97.5384
+offset_bottom = -138.154
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.0288, 2.0288)
 theme = ExtResource("9_1cx5a")
-theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_v8blo")
 theme_override_font_sizes/font_size = 60
 text = "16"
@@ -47,8 +47,11 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Energy View" type="Sprite2D" parent="."]
-position = Vector2(1147, 434)
-texture = ExtResource("10_454a2")
+position = Vector2(1093, 410)
+scale = Vector2(3, 3)
+texture = ExtResource("11_yglo0")
+region_enabled = true
+region_rect = Rect2(721, 17, 46, 46)
 
 [node name="Energy Label" type="Label" parent="Energy View"]
 anchors_preset = 8
@@ -56,23 +59,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -106.0
-offset_top = -88.0
-offset_right = -22.0
-offset_bottom = -40.0
+offset_left = -50.3333
+offset_top = -41.3333
+offset_right = 33.6667
+offset_bottom = 6.66667
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 theme = ExtResource("9_1cx5a")
-theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_v8blo")
 theme_override_font_sizes/font_size = 40
 text = "3/3"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Discard View" type="Sprite2D" parent="."]
-position = Vector2(107, 614)
+position = Vector2(191, 614)
 scale = Vector2(0.422499, 0.4225)
 texture = ExtResource("11_q0fq0")
 
@@ -89,10 +91,27 @@ offset_bottom = -106.286
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_1cx5a")
-theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_v8blo")
 theme_override_font_sizes/font_size = 60
 text = "16"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+
+[node name="Discard Count Label2" type="Label" parent="Discard View"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -360.118
+offset_right = -58.0
+offset_bottom = -292.118
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_1cx5a")
+theme_override_fonts/font = ExtResource("9_v8blo")
+theme_override_font_sizes/font_size = 60
+text = "Discard"
+horizontal_alignment = 1
+vertical_alignment = 1

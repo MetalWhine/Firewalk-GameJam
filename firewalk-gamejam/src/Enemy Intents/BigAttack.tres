@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyIntents" load_steps=2 format=3 uid="uid://bjb1pcd4gmd7s"]
+
+[ext_resource type="Script" uid="uid://bw4kc2tnlai6" path="res://src/Enemy Intents/EnemyIntents.cs" id="1_20u5a"]
+
+[resource]
+script = ExtResource("1_20u5a")
+intentsType = 0
+OptionalMultiplier = 2.0
+OptionalAddition = 0
+metadata/_custom_type_script = "uid://bw4kc2tnlai6"
