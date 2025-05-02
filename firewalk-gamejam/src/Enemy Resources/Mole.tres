@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=6 format=3 uid="uid://t4nnd4celfy3"]
+
+[ext_resource type="Script" uid="uid://dwx0dsuh4feta" path="res://src/EnemyResource.cs" id="1_0vaes"]
+[ext_resource type="Texture2D" uid="uid://bsmgolli6h1t6" path="res://assets/Enemies/mole_general_.png" id="1_mmm2c"]
+[ext_resource type="Resource" uid="uid://dfxr6lxebv128" path="res://src/Enemy Intents/BasicAttack.tres" id="1_sbf25"]
+[ext_resource type="Resource" uid="uid://smsj7j6kddv1" path="res://src/Enemy Intents/BasicAttackDebuff.tres" id="2_cicdu"]
+[ext_resource type="Resource" uid="uid://bev47fud0p04i" path="res://src/Enemy Intents/MediumAttack.tres" id="3_ua63e"]
+
+[resource]
+script = ExtResource("1_0vaes")
+EnemyName = "Mole"
+MaxEnemyHealth = 25
+EnemyPower = 5
+EnemyIntentsArray = Array[Object]([ExtResource("1_sbf25"), ExtResource("2_cicdu"), ExtResource("1_sbf25"), ExtResource("3_ua63e")])
+EnemySprite = ExtResource("1_mmm2c")
+enemyTag = 0
+metadata/_custom_type_script = "uid://dwx0dsuh4feta"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b14qhegctuyu4"
-path="res://.godot/imported/UI books & more.png-8d409c12d9b2816b26fd9c3df2eda9f3.ctex"
+uid="uid://c6qiu0jja88ov"
+path="res://.godot/imported/Red Skull.png-0f3e26b03bd0dc20c7b8a6872c47796e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI books & more.png"
-dest_files=["res://.godot/imported/UI books & more.png-8d409c12d9b2816b26fd9c3df2eda9f3.ctex"]
+source_file="res://assets/Red Skull.png"
+dest_files=["res://.godot/imported/Red Skull.png-0f3e26b03bd0dc20c7b8a6872c47796e.ctex"]
 
 [params]
 
@@ -21,9 +21,9 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=1
+roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

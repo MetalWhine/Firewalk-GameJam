@@ -21,7 +21,7 @@ cardBase = ExtResource("6_454a2")
 [node name="PlayerHand" parent="." instance=ExtResource("2_r6i5e")]
 
 [node name="Deck View" type="Sprite2D" parent="."]
-position = Vector2(1148, 601)
+position = Vector2(1089, 601)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("8_wfb4o")
 
@@ -31,14 +31,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -154.286
-offset_right = -58.0
-offset_bottom = -106.286
+offset_left = -181.538
+offset_top = -206.154
+offset_right = -97.5384
+offset_bottom = -138.154
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.0288, 2.0288)
 theme = ExtResource("9_1cx5a")
-theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_v8blo")
 theme_override_font_sizes/font_size = 60
 text = "16"
@@ -47,7 +47,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Energy View" type="Sprite2D" parent="."]
-position = Vector2(1152, 410)
+position = Vector2(1093, 410)
 scale = Vector2(3, 3)
 texture = ExtResource("11_yglo0")
 region_enabled = true
@@ -67,7 +67,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
 theme = ExtResource("9_1cx5a")
-theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_v8blo")
 theme_override_font_sizes/font_size = 40
 text = "3/3"
@@ -75,7 +74,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Discard View" type="Sprite2D" parent="."]
-position = Vector2(107, 614)
+position = Vector2(191, 614)
 scale = Vector2(0.422499, 0.4225)
 texture = ExtResource("11_q0fq0")
 
@@ -92,10 +91,27 @@ offset_bottom = -106.286
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_1cx5a")
-theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_v8blo")
 theme_override_font_sizes/font_size = 60
 text = "16"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+
+[node name="Discard Count Label2" type="Label" parent="Discard View"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -360.118
+offset_right = -58.0
+offset_bottom = -292.118
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_1cx5a")
+theme_override_fonts/font = ExtResource("9_v8blo")
+theme_override_font_sizes/font_size = 60
+text = "Discard"
+horizontal_alignment = 1
+vertical_alignment = 1

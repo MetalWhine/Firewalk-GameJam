@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class CardManager : Node
 {
@@ -71,9 +72,20 @@ public partial class CardManager : Node
 
     public void ResetDeck()
     {
+       playerHand.DiscardAllCards();
        cardsInDeck.Clear();
        cardsInDiscard.Clear();
-       cardsInDeck = cardsPlayerOwns;
+
+
+        foreach (Card card in cardsPlayerOwns)
+        {
+            Card newcard = (Card)cardBase.Instantiate();
+            newcard.cardResource = card.cardResource;
+            newcard.Name = card.Name;
+            cardsInDeck.Add(newcard);
+        }
+
+
        cardsInDeck = ShuffleCards(cardsInDeck);
        UpdateLabels();
     }

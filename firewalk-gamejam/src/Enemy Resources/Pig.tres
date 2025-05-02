@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://b0llv4magi1jw"]
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=6 format=3 uid="uid://b0llv4magi1jw"]
 
 [ext_resource type="Texture2D" uid="uid://dow5iehtig70s" path="res://icon.svg" id="1_x6np5"]
+[ext_resource type="Resource" uid="uid://b30tv7uqybkh6" path="res://src/Enemy Intents/BasicHeal.tres" id="1_ytwk2"]
 [ext_resource type="Script" uid="uid://dwx0dsuh4feta" path="res://src/EnemyResource.cs" id="2_mkpb1"]
+[ext_resource type="Resource" uid="uid://dfxr6lxebv128" path="res://src/Enemy Intents/BasicAttack.tres" id="2_p7xgf"]
+[ext_resource type="Resource" uid="uid://smsj7j6kddv1" path="res://src/Enemy Intents/BasicAttackDebuff.tres" id="3_p7xgf"]
 
 [resource]
 script = ExtResource("2_mkpb1")
 EnemyName = "Pig"
 MaxEnemyHealth = 30
-EnemyRageInflict = 3
-EnemyIntentsArray = null
+EnemyPower = 3
+EnemyIntentsArray = Array[Object]([ExtResource("1_ytwk2"), ExtResource("2_p7xgf"), ExtResource("3_p7xgf")])
 EnemySprite = ExtResource("1_x6np5")
 enemyTag = 0
 metadata/_custom_type_script = "uid://dwx0dsuh4feta"

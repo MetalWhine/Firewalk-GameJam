@@ -1,3 +1,8 @@
+// TO DO
+// ADD FUNCTIONALITY FOR RAGE METER
+// EVERY 10 RAGE = 1 EXTRA ATTACK
+// EVERY 30 RAGE = 1 EXTRA ENERGY
+
 using Godot;
 using System;
 
@@ -53,7 +58,7 @@ public partial class Player : Node
 
     public void ResetModifiers()
     {
-       attack = 0;
+        attack = 0;
         resistance = 0;
     }
 
@@ -85,6 +90,6 @@ public partial class Player : Node
         _rageSlider.Value = rage;
         _rageLabel.Text = $"Rage: {rage}/{maxRage}";
         double temp = maxRage / 10;
-        _rageSlider.TickCount = (int)Math.Floor(temp);
+        _rageSlider.TickCount = (int)Math.Floor(temp)+1;
     }
 }

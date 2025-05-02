@@ -20,18 +20,24 @@ public partial class EnemyResource : Resource
     public enum EnemyTags
     {
         EasyEnemy,
-        MediumEnemy,
-        HardEnemy,
+        EliteEnemy,
         BossEnemy,
     }
 
-    public EnemyIntents SetNextEnemyIntent(int turnCount)
+    public EnemyIntents SetNextEnemyIntent(int turnCount, int enemyPower)
     {
         EnemyIntents nextIntent;
         int i;
-
-        i = (turnCount-1) % EnemyIntentsArray.Length;
+        if (turnCount == 0)
+        {
+            i = 0;
+        }
+        else
+        {
+            i = (turnCount - 1) % EnemyIntentsArray.Length;
+        }
         nextIntent = EnemyIntentsArray[i];
+        nextIntent.CalculateValue(enemyPower);
         return nextIntent;
     }
 }

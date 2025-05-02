@@ -1,7 +1,9 @@
+// TO DO
+// UPDATE INTENTS BASED ON PLAYER'S BUFFS
+
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public partial class Enemy : Node2D
 {
@@ -17,6 +19,7 @@ public partial class Enemy : Node2D
     [Export]
     public EnemyResource[] possibleEnemyResources;
     public EnemyResource enemyResource;
+    public EnemyIntents currentEnemyIntent;
     private int _currentHealth;
     private int _maxHealth;
     private float _levelMultiplier;
@@ -40,13 +43,28 @@ public partial class Enemy : Node2D
         InitializeEnemy();
     }
 
+    private void EnemyDied()
+    {
+        
+    }
+
     public void TakeDamage(int i)
     {
         _currentHealth -= i;
         if(_currentHealth < 0)
         {
             _currentHealth = 0;
-            // Enemy dies
+            EnemyDied();
+        }
+        UpdateLabels();
+    }
+
+    public void Heal(int i)
+    {
+        _currentHealth += i;
+        if(_currentHealth > _maxHealth)
+        {
+            _currentHealth = _maxHealth;
         }
         UpdateLabels();
     }
@@ -84,14 +102,27 @@ public partial class Enemy : Node2D
         _enemyPower = (int)Mathf.Floor(MathF.Pow(enemyResource.EnemyPower, _levelMultiplier));
         _maxHealth = (int)Mathf.Floor(MathF.Pow(enemyResource.MaxEnemyHealth, _levelMultiplier));
         _currentHealth = _maxHealth;
+        currentEnemyIntent = enemyResource.SetNextEnemyIntent(0, _enemyPower);
         UpdateLabels();
     }
 
     public void UpdateLabels()
     {
         _healthLabel.Text = $"Health: {_currentHealth}/{_maxHealth}";
-        _intentLabel.Text = $"Intent: ";
+        _intentLabel.Text = $"Intent: {currentEnemyIntent.GenerateIntentText()}";
         _healthSlider.MaxValue = _maxHealth;
         _healthSlider.Value = _currentHealth;
+    }
+
+    public void ChangeIntent(int currentTurn, int playerRes = 0)
+    {
+        currentEnemyIntent = enemyResource.SetNextEnemyIntent(currentTurn, _enemyPower);
+        UpdateLabels();
+    }
+
+    public void UpdateEnemyIntent(int playerRes)
+    {
+        currentEnemyIntent.CalculateValue(_enemyPower, playerRes);
+        UpdateLabels();
     }
 }
