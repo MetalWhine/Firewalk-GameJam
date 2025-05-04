@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class Card : Control
 {
@@ -10,6 +11,7 @@ public partial class Card : Control
     private Label _cardCostLabel;
     private Sprite2D _cardSprite;
     private AnimationPlayer _animationPlayer;
+    private AudioStreamPlayer _audioPlayer;
     #endregion
 
     #region BOOLEAN CHECKS
@@ -22,11 +24,14 @@ public partial class Card : Control
     #region CARD SETTINGS
     // Editable Card settings
     [Export]
+    private bool forSelection = false;
+    [Export]
     private float _dragSpeed = 22f;
     [Export]
     private float _zoomMultiplier = 1.5f;
     [Export]
     private float zoomSpeed = 20f;
+    private bool _cardFinished = false;
 
     // Non Editable Card settings
     Vector2 _zoomMultiplierVector2;
@@ -35,6 +40,8 @@ public partial class Card : Control
 
     // Card template
     public CardResource cardResource;
+
+    private bool _hoveringOverCard = false;
     #endregion
 
     #region SIGNALS AND DELEGATES
@@ -46,14 +53,17 @@ public partial class Card : Control
 
     public override void _Ready()
     {
-        InitializeCard();
+        if (!forSelection) { InitializeCard(); }
         base._Ready();
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        DragLogic();
-        ZoomLogic();
+        if (!forSelection && !_cardFinished)
+        {
+            DragLogic();
+            ZoomLogic();
+        }
         base._PhysicsProcess(delta);
     }
 
@@ -62,13 +72,22 @@ public partial class Card : Control
         if (validity)
         {
             _animationPlayer.Stop();
+            _cardFinished = true;
             EmitSignal(SignalName.CardDropped, validity, this);
-            QueueFree();
+            _animationPlayer.Play("Card_Played");
         }
         else
         {
             EmitSignal(SignalName.CardDropped, validity, this);
             _animationPlayer.Stop();
+        }
+    }
+
+    public void AnimationFinishedReceiver(StringName str)
+    {
+        if(str =="Card_Played")
+        {
+            QueueFree();
         }
     }
 
@@ -78,6 +97,10 @@ public partial class Card : Control
         {
             if (Input.IsActionPressed("Click"))
             {
+                if (!_isDragging)
+                {
+                    PlaySound();
+                }
                 GlobalPosition = CustomLerpVector2(GlobalPosition, GetGlobalMousePosition() - (Size*Scale.X / 2), _dragSpeed*(float)GetPhysicsProcessDeltaTime());
                 _isDragging = true;
                 MouseBrain.current_card_held = this;
@@ -94,6 +117,7 @@ public partial class Card : Control
             }
             else if (MouseBrain.current_card_held == this)
             {
+                PlaySound();
                 _isDragging = false;
                 MouseBrain.current_card_held = null;
                 if (_isValidDropPosition)
@@ -115,11 +139,17 @@ public partial class Card : Control
     {
         if ((_isMouseOver || _isDragging) && (MouseBrain.current_card_held == null || MouseBrain.current_card_held == this) && Scale != _zoomMultiplierVector2)
         {
+            if (!_hoveringOverCard)
+            {
+                PlaySound();
+                _hoveringOverCard = true;
+            }
             Scale = CustomLerpVector2(Scale, _zoomMultiplierVector2, zoomSpeed * (float)GetPhysicsProcessDeltaTime());
             ZIndex = 20;
         }
         else if (!_isMouseOver && Scale != Vector2.One)
         {
+            _hoveringOverCard = false;
             Scale = CustomLerpVector2(Scale, Vector2.One, zoomSpeed * (float)GetPhysicsProcessDeltaTime());
             ZIndex = defaultZIndex;
         }
@@ -131,11 +161,12 @@ public partial class Card : Control
 
     #region INITIALIZE FUNCTIONS
 
-    private void InitializeCard()
+    public void InitializeCard()
     {
         _zoomMultiplierVector2 = new Vector2(_zoomMultiplier, _zoomMultiplier);
         _cardSprite = GetNode<Sprite2D>("Card Sprite");
         _cardSprite.Texture = cardResource.CardSrpite;
+        _audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 
         _cardNameLabel = GetNode<Label>("Card Sprite/Name Label");
         _cardCostLabel = GetNode<Label>("Card Sprite/Cost Label");
@@ -149,32 +180,32 @@ public partial class Card : Control
         GenerateCardLabels();
     }
 
-    private void GenerateCardLabels()
+    public void GenerateCardLabels(int damageModifier = 0, int attackModifier = 0, int resistanceModifier = 0, int rageModifier = 0)
     {
         _cardNameLabel.Text = cardResource.CardName;
         _cardCostLabel.Text = cardResource.CardCost.ToString();
         _cardTypeLabel.Text = cardResource.cardType.ToString();
-        GenerateCardDescription();
+        GenerateCardDescription(damageModifier, attackModifier, resistanceModifier, rageModifier);
     }
 
-    private void GenerateCardDescription()
+    public void GenerateCardDescription(int damageModifier = 0, int attackModifier = 0, int resistanceModifier = 0, int rageModifier = 0)
     {
         string Description = "";
         if (cardResource.DamageValue != 0)
         {
-            Description += $" Deal {cardResource.DamageValue} damage \n";
+            Description += $" Deal {cardResource.DamageValue + damageModifier} damage \n";
         }
         if (cardResource.AttackValue != 0)
         {
-            Description += $" Change attack by {cardResource.DamageValue} \n";
+            Description += $" Change attack by {cardResource.AttackValue + attackModifier} \n";
         }
         if (cardResource.ResistanceValue != 0)
         {
-            Description += $" Change resistance by {cardResource.ResistanceValue} \n";
+            Description += $" Change resistance by {cardResource.ResistanceValue + resistanceModifier} \n";
         }
         if (cardResource.RageValue != 0)
         {
-            Description += $" Change rage by {cardResource.RageValue} \n";
+            Description += $" Change rage by {cardResource.RageValue + rageModifier} \n";
         }
         _cardDescriptionLabel.Text = Description;
     }
@@ -203,6 +234,12 @@ public partial class Card : Control
     private void ValidityCheck()
     {
         EmitSignal(SignalName.CardDroppedValidCheck, this);
+    }
+
+    private void PlaySound()
+    {
+        _audioPlayer.PitchScale = (float)GD.RandRange(0.8, 1.2);
+        _audioPlayer.Play();
     }
     #endregion
 

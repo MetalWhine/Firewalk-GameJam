@@ -6,12 +6,11 @@
 [resource]
 script = ExtResource("1_5dksh")
 CardName = "Howl"
-CardCost = 2
-cardType = 2
+CardCost = 1
+cardType = 1
 CardSrpite = ExtResource("1_0o83x")
 DamageValue = 0
 AttackValue = 0
-ResistanceValue = 0
-RageValue = -5
-CardDescription = ""
+ResistanceValue = 5
+RageValue = 0
 metadata/_custom_type_script = "uid://xs2slagbave4"

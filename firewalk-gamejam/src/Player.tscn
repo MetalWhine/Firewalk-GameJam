@@ -1,16 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbvhe2gbvxgpf"]
+[gd_scene load_steps=6 format=3 uid="uid://bbvhe2gbvxgpf"]
 
 [ext_resource type="Script" uid="uid://dgdwdxnpghiif" path="res://src/Player.cs" id="1_0pyg0"]
-[ext_resource type="Texture2D" uid="uid://bylvqwxd6wekq" path="res://assets/Wolf-export.png" id="2_5b12s"]
+[ext_resource type="Texture2D" uid="uid://dxt5jbvmgu8jv" path="res://assets/New Wolf.png" id="3_4s78w"]
 [ext_resource type="Theme" uid="uid://d1jtroqourf7h" path="res://src/PlayerTheme.tres" id="3_n57y7"]
+[ext_resource type="Texture2D" uid="uid://darsl8qm38dfc" path="res://assets/GUI.png" id="4_4s78w"]
+[ext_resource type="Texture2D" uid="uid://t6tnkyxbdb5e" path="res://assets/Shadow.png" id="5_lsqpv"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_0pyg0")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(96, 17)
+scale = Vector2(4.64, 1.32)
+texture = ExtResource("4_4s78w")
+region_enabled = true
+region_rect = Rect2(49, 97, 30, 30)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.45098)
+position = Vector2(111, 236)
+scale = Vector2(1.74219, 0.261719)
+texture = ExtResource("5_lsqpv")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(102, 149)
-scale = Vector2(1.9856, 1.9856)
-texture = ExtResource("2_5b12s")
+scale = Vector2(1.53032, 1.53032)
+texture = ExtResource("3_4s78w")
 
 [node name="Rage Meter" type="HSlider" parent="."]
 offset_top = 23.0
@@ -24,8 +39,10 @@ tick_count = 4
 ticks_on_borders = true
 
 [node name="Rage Label" type="Label" parent="."]
-offset_right = 194.0
-offset_bottom = 23.0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 193.0
+offset_bottom = 26.0
 theme = ExtResource("3_n57y7")
 text = "Rage: 0/0"
 horizontal_alignment = 1

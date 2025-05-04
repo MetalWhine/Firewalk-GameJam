@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=7 format=3 uid="uid://b0llv4magi1jw"]
+
+[ext_resource type="Resource" uid="uid://b30tv7uqybkh6" path="res://src/Enemy Intents/BasicHeal.tres" id="1_5j2d6"]
+[ext_resource type="Resource" uid="uid://dfxr6lxebv128" path="res://src/Enemy Intents/BasicAttack.tres" id="2_6oqsj"]
+[ext_resource type="Resource" uid="uid://smsj7j6kddv1" path="res://src/Enemy Intents/BasicAttackDebuff.tres" id="3_76umh"]
+[ext_resource type="Resource" uid="uid://bev47fud0p04i" path="res://src/Enemy Intents/MediumAttack.tres" id="4_6oqsj"]
+[ext_resource type="Texture2D" uid="uid://dx1yfnqh5a1ce" path="res://assets/Enemies/wasp_.png" id="5_6oqsj"]
+[ext_resource type="Script" uid="uid://dwx0dsuh4feta" path="res://src/EnemyResource.cs" id="5_n3sqh"]
+
+[resource]
+script = ExtResource("5_n3sqh")
+EnemyName = "Wasp"
+MaxEnemyHealth = 30
+EnemyPower = 5
+EnemyIntentsArray = Array[Object]([ExtResource("2_6oqsj"), ExtResource("3_76umh"), ExtResource("1_5j2d6"), ExtResource("4_6oqsj")])
+EnemySprite = ExtResource("5_6oqsj")
+enemyTag = 0
+metadata/_custom_type_script = "uid://dwx0dsuh4feta"

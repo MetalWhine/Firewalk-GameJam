@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cad4ciie1n67x"]
+[gd_scene load_steps=10 format=3 uid="uid://cad4ciie1n67x"]
 
 [ext_resource type="Theme" uid="uid://d0c8netu8eyu2" path="res://src/Card Theme.tres" id="1_cm0lg"]
 [ext_resource type="Script" uid="uid://capvk74es55x4" path="res://src/Card.cs" id="1_oj312"]
 [ext_resource type="Texture2D" uid="uid://b2mj5dp1jw7lw" path="res://assets/Cards/card_back.png" id="4_cm0lg"]
+[ext_resource type="AudioStream" uid="uid://komadof3kts8" path="res://assets/Cards/card-sounds-35956.ogg" id="4_er4au"]
+[ext_resource type="Texture2D" uid="uid://c8ls1px3kyvt4" path="res://assets/_57x44px.png" id="5_er4au"]
 
 [sub_resource type="Animation" id="Animation_d8ann"]
 resource_name = "Card_ValidHover"
@@ -35,9 +37,63 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Particle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_er4au"]
+resource_name = "Card_Played"
+length = 0.600002
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Particle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0333333, 0.05, 0.0666667, 0.0833333, 0.0999999, 0.116667, 0.133333, 0.15, 0.166667, 0.183333, 0.2, 0.216667, 0.233333, 0.25, 0.266667, 0.283333, 0.3, 0.316667, 0.333333, 0.35, 0.366667, 0.383333, 0.4, 0.416667, 0.433333, 0.45, 0.466667, 0.483333, 0.5, 0.516667, 0.533333, 0.55, 0.566667, 0.583333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 31, 32, 33, 34, 35, 36, 38]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_er4au"]
 _data = {
+&"Card_Played": SubResource("Animation_er4au"),
 &"Card_ValidHover": SubResource("Animation_d8ann"),
 &"RESET": SubResource("Animation_cm0lg")
 }
@@ -60,6 +116,14 @@ pivot_offset = Vector2(100, 280)
 theme = ExtResource("1_cm0lg")
 script = ExtResource("1_oj312")
 _zoomMultiplier = 1.2
+
+[node name="Particle" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(99, 132)
+scale = Vector2(6.44495, 6.44495)
+texture = ExtResource("5_er4au")
+hframes = 7
+vframes = 7
 
 [node name="Card Sprite" type="Sprite2D" parent="."]
 position = Vector2(100, 140)
@@ -108,5 +172,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_er4au")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_er4au")
+volume_db = 2.0
+mix_target = 2
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="AnimationFinishedReceiver"]

@@ -1,11 +1,16 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class CombatManager : Node
 {
+
+    [Signal]
+    public delegate void CardSelectCallEventHandler(Card cardSelection1, Card cardSelection2, Card cardSelection3);
+
     #region COMBAT SCREEN NODES
     private CardManager _cardManager;
-    private Player _player;
+    public Player _player;
     private Enemy _enemy;
 
     private Label _turnLabel;
@@ -17,18 +22,51 @@ public partial class CombatManager : Node
 
     private int _currentTurn = 1;
 
-    public override void _Process(double delta)
+    public override void _Ready()
     {
-        if(Input.IsActionJustPressed("ui_accept"))
-        {
-            NewLevel();
-        }
-        base._Process(delta);
+        _cardManager = GetNode<CardManager>("Card Manager");
+        _player = GetNode<Player>("Player");
+        _enemy = GetNode<Enemy>("Enemy");
+        _turnLabel = GetNode<Label>("Combat UI/Turn Label");
+        _attackLabel = GetNode<Label>("Combat UI/Attack Label");
+        _resistanceLable = GetNode<Label>("Combat UI/Resistance Label");
+
+        _cardManager.CardPlayed += ResolveCard;
+        _player.StatsChanged += PlayerStatsChangedHandler;
+
+        _enemy.EnemyDiedSignal += EnemyDiedHandler;
+
+        ResetGame();
+        base._Ready();
+    }
+
+    public void NewGameStarted()
+    {
+        ResetGame();
+        NewLevel();
+    }
+
+    public void CardSkippedHandler()
+    {
+        NewLevel();
+    }
+
+    public void CardSelectedHandler(Card card = null)
+    {
+        _cardManager.cardsPlayerOwns.Add(card);
+        NewLevel();
     }
 
     public void NewLevel()
     {
-        _enemy.NewEnemy(Level, EnemyResource.EnemyTags.EasyEnemy);
+        if (Level % 5 == 0)
+        {
+            _enemy.NewEnemy(Level, EnemyResource.EnemyTags.BossEnemy);
+        }
+        else
+        {
+            _enemy.NewEnemy(Level, EnemyResource.EnemyTags.EasyEnemy);
+        }
         _enemy.ChangeIntent(_currentTurn);
         _cardManager.maxEnergy = _player.maxEnergy;
         _cardManager.ResetEnergy();
@@ -41,19 +79,41 @@ public partial class CombatManager : Node
         Level++;
     }
 
-    public override void _Ready()
+    public void EnemyDiedHandler()
     {
-        _cardManager = GetNode<CardManager>("Card Manager");
-        _player = GetNode<Player>("Player");
-        _enemy = GetNode<Enemy>("Enemy");
-        _turnLabel = GetNode<Label>("Combat UI/Turn Label");
-        _attackLabel = GetNode<Label>("Combat UI/Attack Label");
-        _resistanceLable = GetNode<Label>("Combat UI/Resistance Label");
+        _cardManager.playerHand.DiscardAllCards();
 
-        _cardManager.CardPlayed += ResolveCard;
+        List<Card> temp = new List<Card>();
+        List<Card> sendTemp = new List<Card>();
+        Random rnd = new Random();
+        foreach (CardResource cardResource in _cardManager.cardsResourcesList)
+        {
+            Card tempCard = (Card)_cardManager.cardBase.Instantiate();
+            tempCard.cardResource = cardResource;
+            tempCard.Name = cardResource.CardName;
+            temp.Add(tempCard);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            int randomIndex = rnd.Next(temp.Count);
+            Card tempCard = (Card)_cardManager.cardBase.Instantiate();
+            tempCard.cardResource = temp[randomIndex].cardResource;
+            sendTemp.Add(tempCard);
+            temp.RemoveAt(randomIndex);
+        }
+        temp.Clear();
+        EmitSignal(SignalName.CardSelectCall, sendTemp[0], sendTemp[1], sendTemp[2]);
+        sendTemp.Clear();
+    }
 
-        ResetGame();
-        base._Ready();
+    private void PlayerStatsChangedHandler()
+    {
+        if (_player.maxEnergy != _cardManager.maxEnergy)
+        {
+            _cardManager.maxEnergy = _player.maxEnergy;
+            _cardManager.UpdateLabels();
+        }
+        UpdatePlayerStatsLabels();
     }
 
     private void ResolveCard(Card card)
@@ -98,10 +158,12 @@ public partial class CombatManager : Node
             case EnemyIntents.IntentsType.Heal:
                 _enemy.Heal(currentIntent.value);
                 break;
+            default:
+                break;
         }
     }
 
-    private void ResetGame()
+    public void ResetGame()
     {
         _player.InitializePlayer();
         _cardManager.maxEnergy = _player.maxEnergy;
@@ -122,15 +184,20 @@ public partial class CombatManager : Node
 
     private void DecreasePlayerModifiers()
     {
-        if (_player.attack-1 >= 0) { _player.attack--; }
+        if (_player.attack-1 >= _player.rageTicks) { _player.attack--; }
         _player.resistance = 0;
         UpdatePlayerStatsLabels();
+    }
+
+    public void DiscardAllCardsInHand()
+    {
+        _cardManager.playerHand.DiscardAllCards();
     }
 
     private void ResetHand()
     {
         _cardManager.ResetEnergy();
-        _cardManager.playerHand.DiscardAllCards();
+        DiscardAllCardsInHand();
         _cardManager.AddCardToHand(_player.maxHandDrawSize);
     }
 
@@ -138,5 +205,6 @@ public partial class CombatManager : Node
     {
         _attackLabel.Text = $"Atk: {_player.attack}";
         _resistanceLable.Text = $"Res: {_player.resistance}";
+        _cardManager.playerHand.UpdateAttackCardsInHand(_player.attack);
     }
 }

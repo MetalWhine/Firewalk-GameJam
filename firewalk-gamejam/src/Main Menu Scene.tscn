@@ -1,0 +1,170 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqwql6rff0hhl"]
+
+[ext_resource type="Texture2D" uid="uid://bulwcstqy0bug" path="res://assets/Space Background.png" id="1_kgdgx"]
+[ext_resource type="Script" uid="uid://c2g20uj2xnvys" path="res://src/MainMenuScene.cs" id="1_qsptw"]
+[ext_resource type="Theme" uid="uid://b2x6hihkdxfxf" path="res://src/Combat UI Theme.tres" id="1_wdtem"]
+[ext_resource type="Texture2D" uid="uid://bhy375we83wbh" path="res://assets/title_rough.png" id="4_iirsq"]
+[ext_resource type="AudioStream" uid="uid://n8j7qd6omd6l" path="res://assets/Minimalist6.wav" id="5_44ci4"]
+[ext_resource type="Script" uid="uid://cci8rid08v785" path="res://src/ButtonClick.cs" id="6_3v6u2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsptw"]
+texture = ExtResource("1_kgdgx")
+
+[node name="Main Menu Scene" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qsptw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qsptw")
+
+[node name="Play Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -520.0
+offset_top = 12.0
+offset_right = -340.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.40649, 1.40649)
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/font_size = 40
+text = "New Game"
+
+[node name="Continue Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -524.0
+offset_top = -101.0
+offset_right = -269.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.40649, 1.40649)
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/font_size = 40
+text = "Continue Game"
+
+[node name="Exit Game Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -515.0
+offset_top = 124.0
+offset_right = -340.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.40649, 1.40649)
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/font_size = 40
+text = "Exit Game"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(500, 0)
+color = Color(0.0313726, 0.0313726, 0.0313726, 0.776471)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 58.0
+offset_right = 356.0
+offset_bottom = 115.0
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/font_size = 50
+text = "Credits:"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/normal_font_size = 40
+text = "Developers:
+
+Programmer: MetalWhine
+
+Artist: Arkuno
+
+------------------------
+
+Tools:
+
+Godot 4.4
+
+Aseprite
+
+------------------------
+Assets:
+
+Basic Pixel Health bar and Scroll bar by BDragon1727
+
+Pixel Space Background Generator by Deep-Fold
+
+Pixel Art GUI Elements - Mounir Tohami
+
+UI assets pack 2 :) by Sr.Toasty
+
+Oak Woods — Environment Asset 🍂 by brullov
+
+The Wolf Pack by finalbossblues
+
+Minifantasy - Dungeon Audio Pack by Leohpaz
+
+Pixel RPG Music Pack by alkakrab
+
+Tiny5 Font by Stefan Schmidt"
+horizontal_alignment = 1
+
+[node name="TitleRough" type="Sprite2D" parent="."]
+position = Vector2(359, 120)
+scale = Vector2(1.10667, 1.10667)
+texture = ExtResource("4_iirsq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_44ci4")
+script = ExtResource("6_3v6u2")
+
+[connection signal="button_down" from="Play Button" to="." method="NewGame"]
+[connection signal="button_down" from="Play Button" to="AudioStreamPlayer" method="ButtonClickedResponder"]
+[connection signal="button_down" from="Continue Button" to="." method="ContinueGame"]
+[connection signal="button_down" from="Continue Button" to="AudioStreamPlayer" method="ButtonClickedResponder"]
+[connection signal="button_down" from="Exit Game Button" to="." method="QuitGame"]
+[connection signal="button_down" from="Exit Game Button" to="AudioStreamPlayer" method="ButtonClickedResponder"]

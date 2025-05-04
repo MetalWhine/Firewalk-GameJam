@@ -1,6 +1,3 @@
-// TO DO
-// UPDATE INTENTS BASED ON PLAYER'S BUFFS
-
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -26,6 +23,9 @@ public partial class Enemy : Node2D
     private int _enemyPower;
     #endregion
 
+    [Signal]
+    public delegate void EnemyDiedSignalEventHandler();
+
     public override void _Ready()
     {
         _enemySprite = GetNode<Sprite2D>("Sprite2D");
@@ -45,13 +45,13 @@ public partial class Enemy : Node2D
 
     private void EnemyDied()
     {
-        
+        EmitSignal(SignalName.EnemyDiedSignal);
     }
 
     public void TakeDamage(int i)
     {
         _currentHealth -= i;
-        if(_currentHealth < 0)
+        if(_currentHealth <= 0)
         {
             _currentHealth = 0;
             EnemyDied();

@@ -6,12 +6,11 @@
 [resource]
 script = ExtResource("1_gtmc5")
 CardName = "Steak"
-CardCost = 1
-cardType = 1
+CardCost = 2
+cardType = 2
 CardSrpite = ExtResource("1_nfyks")
 DamageValue = 0
 AttackValue = 0
-ResistanceValue = 5
-RageValue = 0
-CardDescription = ""
+ResistanceValue = 0
+RageValue = -9
 metadata/_custom_type_script = "uid://xs2slagbave4"

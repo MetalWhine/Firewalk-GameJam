@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b2x6hihkdxfxf"]
+
+[ext_resource type="FontFile" uid="uid://78dwrw8sofb6" path="res://assets/Tiny5-Regular.ttf" id="1_n6c2m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6c2m"]
+bg_color = Color(0.450648, 0.450648, 0.450648, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5d7y"]
+bg_color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hl8y"]
+
+[resource]
+Button/constants/outline_size = 10
+Button/fonts/font = ExtResource("1_n6c2m")
+Button/styles/hover = SubResource("StyleBoxFlat_n6c2m")
+Button/styles/normal = SubResource("StyleBoxFlat_t5d7y")
+Button/styles/pressed = SubResource("StyleBoxFlat_7hl8y")
+Label/constants/outline_size = 10
+Label/fonts/font = ExtResource("1_n6c2m")
+RichTextLabel/fonts/normal_font = ExtResource("1_n6c2m")

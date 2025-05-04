@@ -22,6 +22,7 @@ public partial class Player : Node
     public int rage { get; set; }
     public int maxRage { get; set; }
     public int maxHandDrawSize { get; set; }
+    public int rageTicks { get; set; }
     #endregion
 
     #region CARD MODIFIERES
@@ -32,6 +33,8 @@ public partial class Player : Node
     #region DELEGATES AND SIGNALS
     [Signal]
     public delegate void GameOverEventHandler();
+    [Signal]
+    public delegate void StatsChangedEventHandler();
     #endregion
 
     #region SPRITES AND UI
@@ -58,7 +61,7 @@ public partial class Player : Node
 
     public void ResetModifiers()
     {
-        attack = 0;
+        attack = rageTicks;
         resistance = 0;
     }
 
@@ -76,12 +79,39 @@ public partial class Player : Node
     {
         rage += rageIncreaseAmount;
         if(rage < 0) rage = 0;
+
+        int newRageTicks = Mathf.FloorToInt(rage/10);
+
+        if (newRageTicks > rageTicks) { 
+            AddAttack(newRageTicks-rageTicks);
+            if (newRageTicks % 3 == 0)
+            {
+                AddMaxEnergy(1);
+            }
+            EmitSignal(SignalName.StatsChanged);
+        }
+        else if (newRageTicks < rageTicks)
+        {
+            AddAttack(rageTicks - newRageTicks);
+            if (rageTicks % 3 == 0)
+            {
+                AddMaxEnergy(-1);
+            }
+            EmitSignal(SignalName.StatsChanged);
+        }
+        rageTicks = newRageTicks;
+
         if (rage >= maxRage)
         {
             rage = 0;
             EmitSignal(SignalName.GameOver);
         }
         UpdateLabels();
+    }
+
+    private void AddMaxEnergy(int i)
+    {
+        maxEnergy += i;
     }
 
     private void UpdateLabels()

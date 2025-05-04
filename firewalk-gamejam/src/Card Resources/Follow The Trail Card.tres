@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://buyj20wnbw36p"]
+
+[ext_resource type="Script" uid="uid://xs2slagbave4" path="res://src/CardResource.cs" id="1_bk1ls"]
+[ext_resource type="Texture2D" uid="uid://cuyq0n5g5cm3t" path="res://assets/Cards/P2P.png" id="1_s5nq5"]
+
+[resource]
+script = ExtResource("1_bk1ls")
+CardName = "Follow Scent"
+CardCost = 2
+cardType = 0
+CardSrpite = ExtResource("1_s5nq5")
+DamageValue = 0
+AttackValue = 3
+ResistanceValue = 0
+RageValue = 0
+metadata/_custom_type_script = "uid://xs2slagbave4"

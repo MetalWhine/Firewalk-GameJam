@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dixctqdv2ldik"]
+
+[ext_resource type="AudioStream" uid="uid://dsj7cvxil2jfk" path="res://assets/Pixel 11.ogg" id="1_pu37c"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_pu37c")
+volume_db = -4.0
+autoplay = true
+parameters/looping = false

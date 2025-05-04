@@ -53,14 +53,14 @@ public partial class CardManager : Node
             newCard.Name = newCard.cardResource.CardName;
             cardsPlayerOwns.Add(newCard);
         }
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 1; i++)
         {
             Card newCard = (Card)cardBase.Instantiate();
             newCard.cardResource = cardsResourcesList[2];
             newCard.Name = newCard.cardResource.CardName;
             cardsPlayerOwns.Add(newCard);
         }
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 5; i++)
         {
             Card newCard = (Card)cardBase.Instantiate();
             newCard.cardResource = cardsResourcesList[3];
@@ -127,7 +127,7 @@ public partial class CardManager : Node
         UpdateLabels();
     }
 
-    private void UpdateLabels()
+    public void UpdateLabels()
     {
         _deckCountLabel.Text = cardsInDeck.Count.ToString();
         _discardLabel.Text = cardsInDiscard.Count.ToString();
