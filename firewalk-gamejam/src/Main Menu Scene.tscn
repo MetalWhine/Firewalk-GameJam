@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqwql6rff0hhl"]
+[gd_scene load_steps=6 format=3 uid="uid://bqwql6rff0hhl"]
 
 [ext_resource type="Texture2D" uid="uid://bulwcstqy0bug" path="res://assets/Space Background.png" id="1_kgdgx"]
 [ext_resource type="Script" uid="uid://c2g20uj2xnvys" path="res://src/MainMenuScene.cs" id="1_qsptw"]
 [ext_resource type="Theme" uid="uid://b2x6hihkdxfxf" path="res://src/Combat UI Theme.tres" id="1_wdtem"]
+[ext_resource type="Texture2D" uid="uid://bhy375we83wbh" path="res://assets/title_rough.png" id="4_iirsq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsptw"]
 texture = ExtResource("1_kgdgx")
@@ -138,6 +139,11 @@ UI assets pack 2 :) by Sr.Toasty
 
 Oak Woods — Environment Asset 🍂 by brullov"
 horizontal_alignment = 1
+
+[node name="TitleRough" type="Sprite2D" parent="."]
+position = Vector2(359, 120)
+scale = Vector2(1.10667, 1.10667)
+texture = ExtResource("4_iirsq")
 
 [connection signal="button_down" from="Play Button" to="." method="NewGame"]
 [connection signal="button_down" from="Continue Button" to="." method="ContinueGame"]

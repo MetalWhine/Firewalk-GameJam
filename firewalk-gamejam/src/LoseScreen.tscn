@@ -39,4 +39,4 @@ offset_bottom = 333.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_6fqyo")
-text = "Something Text"
+text = "Go Back to Main Menu"

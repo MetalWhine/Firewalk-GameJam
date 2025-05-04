@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\cardmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\cardmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\mainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\losescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\cardselectscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\cardselectscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\cardmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|solutionrelative:src\\cardmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E79A0123-5A13-45F3-AE30-183FC6750B54}|Firewalk Gamejam.csproj|c:\\users\\dubst\\documents\\github\\firewalk-gamejam\\firewalk-gamejam\\src\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -72,7 +72,7 @@
               "RelativeDocumentMoniker": "src\\GameManager.cs",
               "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\GameManager.cs",
               "RelativeToolTip": "src\\GameManager.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABoAAAA1AAAA",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAAABQAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-03T07:00:16.855Z",
               "IsPinned": true,
@@ -80,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "LoseScreen.cs",
               "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\LoseScreen.cs",
               "RelativeDocumentMoniker": "src\\LoseScreen.cs",
@@ -88,12 +88,11 @@
               "RelativeToolTip": "src\\LoseScreen.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T08:44:06.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-04T08:44:06.766Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "CombatManager.cs",
               "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CombatManager.cs",
               "RelativeDocumentMoniker": "src\\CombatManager.cs",
@@ -101,12 +100,11 @@
               "RelativeToolTip": "src\\CombatManager.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T01:06:58.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T01:06:58.588Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CardSelectScreen.cs",
               "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardSelectScreen.cs",
               "RelativeDocumentMoniker": "src\\CardSelectScreen.cs",
@@ -114,8 +112,7 @@
               "RelativeToolTip": "src\\CardSelectScreen.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAAwBUAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T05:17:10.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T05:17:10.919Z"
             },
             {
               "$type": "Document",
@@ -133,11 +130,11 @@
         },
         {
           "DockedWidth": 204,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\Player.cs",
               "RelativeDocumentMoniker": "src\\Player.cs",
@@ -146,12 +143,11 @@
               "ViewState": "AQIAAEoAAAAAAAAAAAAUwBgAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T13:13:24.025Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainMenuScene.cs",
               "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\MainMenuScene.cs",
               "RelativeDocumentMoniker": "src\\MainMenuScene.cs",
@@ -164,15 +160,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "CardManager.cs",
               "DocumentMoniker": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardManager.cs",
               "RelativeDocumentMoniker": "src\\CardManager.cs",
               "ToolTip": "C:\\Users\\dubst\\Documents\\GitHub\\Firewalk-GameJam\\firewalk-gamejam\\src\\CardManager.cs",
               "RelativeToolTip": "src\\CardManager.cs",
-              "ViewState": "AQIAAI8AAAAAAAAAAAAgwIMAAAAjAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAYwDEAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T13:53:21.814Z"
+              "WhenOpened": "2025-04-29T13:53:21.814Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
