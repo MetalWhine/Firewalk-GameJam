@@ -9,7 +9,7 @@ color = Color(0.905268, 0.434453, 0.301461, 1)
 thickness = 12
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ne4y8"]
-color = Color(0.162066, 0.162066, 0.162066, 0.458824)
+color = Color(0.160784, 0.160784, 0.160784, 0.933333)
 grow_begin = 0.0
 thickness = 16
 

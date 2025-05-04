@@ -22,6 +22,8 @@ public partial class Card : Control
     #region CARD SETTINGS
     // Editable Card settings
     [Export]
+    private bool forSelection = false;
+    [Export]
     private float _dragSpeed = 22f;
     [Export]
     private float _zoomMultiplier = 1.5f;
@@ -46,14 +48,17 @@ public partial class Card : Control
 
     public override void _Ready()
     {
-        InitializeCard();
+        if (!forSelection) { InitializeCard(); }
         base._Ready();
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        DragLogic();
-        ZoomLogic();
+        if (!forSelection)
+        {
+            DragLogic();
+            ZoomLogic();
+        }
         base._PhysicsProcess(delta);
     }
 
@@ -131,7 +136,7 @@ public partial class Card : Control
 
     #region INITIALIZE FUNCTIONS
 
-    private void InitializeCard()
+    public void InitializeCard()
     {
         _zoomMultiplierVector2 = new Vector2(_zoomMultiplier, _zoomMultiplier);
         _cardSprite = GetNode<Sprite2D>("Card Sprite");
@@ -149,32 +154,32 @@ public partial class Card : Control
         GenerateCardLabels();
     }
 
-    private void GenerateCardLabels()
+    public void GenerateCardLabels(int damageModifier = 0, int attackModifier = 0, int resistanceModifier = 0, int rageModifier = 0)
     {
         _cardNameLabel.Text = cardResource.CardName;
         _cardCostLabel.Text = cardResource.CardCost.ToString();
         _cardTypeLabel.Text = cardResource.cardType.ToString();
-        GenerateCardDescription();
+        GenerateCardDescription(damageModifier, attackModifier, resistanceModifier, rageModifier);
     }
 
-    private void GenerateCardDescription()
+    public void GenerateCardDescription(int damageModifier = 0, int attackModifier = 0, int resistanceModifier = 0, int rageModifier = 0)
     {
         string Description = "";
         if (cardResource.DamageValue != 0)
         {
-            Description += $" Deal {cardResource.DamageValue} damage \n";
+            Description += $" Deal {cardResource.DamageValue + damageModifier} damage \n";
         }
         if (cardResource.AttackValue != 0)
         {
-            Description += $" Change attack by {cardResource.DamageValue} \n";
+            Description += $" Change attack by {cardResource.AttackValue + attackModifier} \n";
         }
         if (cardResource.ResistanceValue != 0)
         {
-            Description += $" Change resistance by {cardResource.ResistanceValue} \n";
+            Description += $" Change resistance by {cardResource.ResistanceValue + resistanceModifier} \n";
         }
         if (cardResource.RageValue != 0)
         {
-            Description += $" Change rage by {cardResource.RageValue} \n";
+            Description += $" Change rage by {cardResource.RageValue + rageModifier} \n";
         }
         _cardDescriptionLabel.Text = Description;
     }

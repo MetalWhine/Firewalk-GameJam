@@ -74,8 +74,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Discard View" type="Sprite2D" parent="."]
-position = Vector2(191, 614)
-scale = Vector2(0.422499, 0.4225)
+position = Vector2(191, 600)
+scale = Vector2(0.539308, 0.539309)
 texture = ExtResource("11_q0fq0")
 
 [node name="Discard Count Label" type="Label" parent="Discard View"]

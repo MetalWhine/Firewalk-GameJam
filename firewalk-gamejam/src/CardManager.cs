@@ -127,7 +127,7 @@ public partial class CardManager : Node
         UpdateLabels();
     }
 
-    private void UpdateLabels()
+    public void UpdateLabels()
     {
         _deckCountLabel.Text = cardsInDeck.Count.ToString();
         _discardLabel.Text = cardsInDiscard.Count.ToString();

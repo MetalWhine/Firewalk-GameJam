@@ -6,14 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://c0c763ka1no8i" path="res://src/Enemy.tscn" id="2_quyvt"]
 [ext_resource type="PackedScene" uid="uid://bbvhe2gbvxgpf" path="res://src/Player.tscn" id="3_i4b6q"]
 [ext_resource type="Texture2D" uid="uid://b14qhegctuyu4" path="res://assets/UI books & more.png" id="3_lwqlr"]
-[ext_resource type="Theme" uid="uid://d0c8netu8eyu2" path="res://src/Card Theme.tres" id="4_h80tb"]
 [ext_resource type="Texture2D" uid="uid://darsl8qm38dfc" path="res://assets/GUI.png" id="4_hliew"]
+[ext_resource type="Theme" uid="uid://b2x6hihkdxfxf" path="res://src/Combat UI Theme.tres" id="5_cac1i"]
 
-[node name="CombatScreen" type="Node"]
+[node name="CombatScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_37jj1")
 
 [node name="Combat UI" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,36 +49,44 @@ region_rect = Rect2(2, 34, 44, 44)
 
 [node name="Next Turn Button" type="Button" parent="Combat UI"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.458
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.458
 offset_left = -84.0
-offset_top = -45.0
+offset_top = -19.76
 offset_right = 84.0
-offset_bottom = -5.0
+offset_bottom = 20.24
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_cac1i")
+theme_override_font_sizes/font_size = 26
 text = "Next Turn"
 
 [node name="Attack Label" type="Label" parent="Combat UI"]
 layout_mode = 0
-offset_left = 154.0
-offset_top = 417.0
-offset_right = 222.0
-offset_bottom = 447.0
-theme = ExtResource("4_h80tb")
+offset_left = 135.0
+offset_top = 394.0
+offset_right = 203.0
+offset_bottom = 424.0
+scale = Vector2(1.66782, 1.66782)
+theme = ExtResource("5_cac1i")
 text = "Atk: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Resistance Label" type="Label" parent="Combat UI"]
 layout_mode = 0
-offset_left = 154.0
-offset_top = 448.0
-offset_right = 222.0
-offset_bottom = 478.0
-theme = ExtResource("4_h80tb")
+offset_left = 135.0
+offset_top = 425.0
+offset_right = 203.0
+offset_bottom = 455.0
+scale = Vector2(1.66782, 1.66782)
+theme = ExtResource("5_cac1i")
 text = "Res: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Turn Label" type="Label" parent="Combat UI"]
 layout_mode = 0
@@ -80,7 +94,7 @@ offset_left = 559.0
 offset_top = 283.0
 offset_right = 724.0
 offset_bottom = 313.0
-theme = ExtResource("4_h80tb")
+theme = ExtResource("5_cac1i")
 text = "Turn: 0"
 horizontal_alignment = 1
 vertical_alignment = 1

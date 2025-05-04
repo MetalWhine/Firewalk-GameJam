@@ -57,6 +57,7 @@ public partial class EnemyIntents : Resource
                 intentText = numberText + " Heal";
                 break;
             default:
+                intentText = "Takes a beak";
                 break;
         }
         return intentText;
@@ -67,5 +68,6 @@ public partial class EnemyIntents : Resource
         Rage,
         AtkDebuff,
         Heal,
+        Etc,
     }
 }

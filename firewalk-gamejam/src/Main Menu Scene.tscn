@@ -1,0 +1,144 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqwql6rff0hhl"]
+
+[ext_resource type="Texture2D" uid="uid://bulwcstqy0bug" path="res://assets/Space Background.png" id="1_kgdgx"]
+[ext_resource type="Script" uid="uid://c2g20uj2xnvys" path="res://src/MainMenuScene.cs" id="1_qsptw"]
+[ext_resource type="Theme" uid="uid://b2x6hihkdxfxf" path="res://src/Combat UI Theme.tres" id="1_wdtem"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsptw"]
+texture = ExtResource("1_kgdgx")
+
+[node name="Main Menu Scene" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qsptw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qsptw")
+
+[node name="Play Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.0
+offset_top = -22.0
+offset_right = -341.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/font_size = 40
+text = "New Game"
+
+[node name="Continue Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.0
+offset_top = -135.0
+offset_right = -341.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/font_size = 40
+text = "Continue Game"
+
+[node name="Exit Game Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -516.0
+offset_top = 90.0
+offset_right = -341.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/font_size = 40
+text = "Exit Game"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(500, 0)
+color = Color(0.0313726, 0.0313726, 0.0313726, 0.776471)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 58.0
+offset_right = 356.0
+offset_bottom = 115.0
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/font_size = 50
+text = "Credits:"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wdtem")
+theme_override_font_sizes/normal_font_size = 40
+text = "Developers:
+
+Programmer: MetalWhine
+
+Artist: Arkuno
+
+------------------------
+
+Tools:
+
+Godot 4.4
+
+Aseprite
+
+------------------------
+Assets:
+
+Basic Pixel Health bar and Scroll bar by BDragon1727
+
+Pixel Space Background Generator by Deep-Fold
+
+Pixel Art GUI Elements - Mounir Tohami
+
+UI assets pack 2 :) by Sr.Toasty
+
+Oak Woods — Environment Asset 🍂 by brullov"
+horizontal_alignment = 1
+
+[connection signal="button_down" from="Play Button" to="." method="NewGame"]
+[connection signal="button_down" from="Continue Button" to="." method="ContinueGame"]
+[connection signal="button_down" from="Exit Game Button" to="." method="QuitGame"]

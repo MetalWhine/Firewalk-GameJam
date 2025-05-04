@@ -17,6 +17,17 @@ public partial class PlayerHand : Node2D
         base._Ready();
     }
 
+    public void UpdateAttackCardsInHand(int attack)
+    {
+        foreach(Card card in _playerHand)
+        {
+            if (card.cardResource.DamageValue != 0)
+            {
+                card.GenerateCardDescription(damageModifier: attack);
+            }
+        }
+    }
+
     public void CardDroppedValidityCheck(Card card)
     {
         _cardManager.CheckValidity(card);

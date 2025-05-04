@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://ispic0t2xtfn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfhdv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfhdv"]
+bg_color = Color(0.174309, 0.126918, 0.164162, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbmpj"]
+bg_color = Color(0.724643, 0.724643, 0.724642, 0.447059)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxEmpty_vfhdv")
+Button/styles/normal = SubResource("StyleBoxFlat_vfhdv")
+Button/styles/pressed = SubResource("StyleBoxFlat_vbmpj")
