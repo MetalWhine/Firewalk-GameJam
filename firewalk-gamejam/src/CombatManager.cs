@@ -189,10 +189,15 @@ public partial class CombatManager : Node
         UpdatePlayerStatsLabels();
     }
 
+    public void DiscardAllCardsInHand()
+    {
+        _cardManager.playerHand.DiscardAllCards();
+    }
+
     private void ResetHand()
     {
         _cardManager.ResetEnergy();
-        _cardManager.playerHand.DiscardAllCards();
+        DiscardAllCardsInHand();
         _cardManager.AddCardToHand(_player.maxHandDrawSize);
     }
 

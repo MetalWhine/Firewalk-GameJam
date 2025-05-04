@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn2vjn6dwq8er"]
+[gd_scene load_steps=10 format=3 uid="uid://bn2vjn6dwq8er"]
 
 [ext_resource type="Script" uid="uid://c7alqgaici3e5" path="res://src/GameManager.cs" id="1_5q4o7"]
 [ext_resource type="PackedScene" uid="uid://c5a5qdac5db88" path="res://src/combat_screen.tscn" id="1_eewff"]
 [ext_resource type="PackedScene" uid="uid://bis62mnf7wxe6" path="res://src/Card Select Screen.tscn" id="1_gh0ne"]
 [ext_resource type="PackedScene" uid="uid://bqwql6rff0hhl" path="res://src/Main Menu Scene.tscn" id="2_fyndt"]
 [ext_resource type="Theme" uid="uid://b2x6hihkdxfxf" path="res://src/Combat UI Theme.tres" id="4_3cfgd"]
+[ext_resource type="AudioStream" uid="uid://n8j7qd6omd6l" path="res://assets/Minimalist6.wav" id="4_5mrjc"]
+[ext_resource type="Script" uid="uid://cci8rid08v785" path="res://src/ButtonClick.cs" id="5_kf8lf"]
 [ext_resource type="PackedScene" uid="uid://dg75dm3vmxjtv" path="res://src/LoseScreen.tscn" id="5_kmhfv"]
+[ext_resource type="PackedScene" uid="uid://cmm1srqx8cm01" path="res://src/tutorial_+_story.tscn" id="8_kf8lf"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -30,11 +33,20 @@ theme = ExtResource("4_3cfgd")
 text = "Return to 
 Main Menu"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Main Menu Button"]
+stream = ExtResource("4_5mrjc")
+script = ExtResource("5_kf8lf")
+
 [node name="Lose Screen" parent="." instance=ExtResource("5_kmhfv")]
 layout_mode = 1
 
 [node name="Card Select Scene" parent="." instance=ExtResource("1_gh0ne")]
 layout_mode = 1
 
+[node name="Tutorial + Story" parent="." instance=ExtResource("8_kf8lf")]
+layout_mode = 1
+
 [node name="Main Menu Scene" parent="." instance=ExtResource("2_fyndt")]
 layout_mode = 1
+
+[connection signal="button_down" from="Main Menu Button" to="Main Menu Button/AudioStreamPlayer" method="ButtonClickedResponder"]

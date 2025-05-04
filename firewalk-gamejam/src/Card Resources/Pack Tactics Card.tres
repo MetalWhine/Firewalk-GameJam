@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://caymp86aixsic"]
+
+[ext_resource type="Script" uid="uid://xs2slagbave4" path="res://src/CardResource.cs" id="1_bd4o8"]
+[ext_resource type="Texture2D" uid="uid://do781m757l1vs" path="res://assets/Cards/R3W.png" id="1_n6xb2"]
+
+[resource]
+script = ExtResource("1_bd4o8")
+CardName = "Pack Tactics"
+CardCost = 1
+cardType = 0
+CardSrpite = ExtResource("1_n6xb2")
+DamageValue = 3
+AttackValue = 0
+ResistanceValue = 3
+RageValue = 0
+metadata/_custom_type_script = "uid://xs2slagbave4"

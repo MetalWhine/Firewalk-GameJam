@@ -23,5 +23,6 @@ public partial class LoseScreen : Control
 	public void ButtonIsClicked()
 	{
 		EmitSignal(SignalName.ButtonClicked);
+		Hide();
 	}
 }

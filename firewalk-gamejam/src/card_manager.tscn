@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3s4quhu3tmfp"]
+[gd_scene load_steps=15 format=3 uid="uid://b3s4quhu3tmfp"]
 
 [ext_resource type="Script" uid="uid://cu207yxgy6wsw" path="res://src/CardManager.cs" id="1_r6i5e"]
 [ext_resource type="Resource" uid="uid://bq6agxof8dnbr" path="res://src/Card Resources/BiteCard.tres" id="2_nunrf"]
@@ -7,15 +7,17 @@
 [ext_resource type="Resource" uid="uid://q1qu2pcn8lyy" path="res://src/Card Resources/HowlCard.tres" id="3_wfb4o"]
 [ext_resource type="Resource" uid="uid://cjeluqh8s5yft" path="res://src/Card Resources/SteakCard.tres" id="4_v8blo"]
 [ext_resource type="PackedScene" uid="uid://cad4ciie1n67x" path="res://src/card.tscn" id="6_454a2"]
+[ext_resource type="Resource" uid="uid://caymp86aixsic" path="res://src/Card Resources/Pack Tactics Card.tres" id="6_sd8f3"]
+[ext_resource type="Resource" uid="uid://buyj20wnbw36p" path="res://src/Card Resources/Follow The Trail Card.tres" id="7_72rt1"]
 [ext_resource type="Texture2D" uid="uid://b2mj5dp1jw7lw" path="res://assets/Cards/card_back.png" id="8_wfb4o"]
 [ext_resource type="Theme" uid="uid://d0c8netu8eyu2" path="res://src/Card Theme.tres" id="9_1cx5a"]
 [ext_resource type="FontFile" uid="uid://78dwrw8sofb6" path="res://assets/Tiny5-Regular.ttf" id="9_v8blo"]
-[ext_resource type="Texture2D" uid="uid://bi2aop6prykhj" path="res://assets/Cards/Card Base.svg" id="11_q0fq0"]
+[ext_resource type="Texture2D" uid="uid://bi2aop6prykhj" path="res://assets/Card Base.svg" id="11_q0fq0"]
 [ext_resource type="Texture2D" uid="uid://b14qhegctuyu4" path="res://assets/UI books & more.png" id="11_yglo0"]
 
 [node name="Card Manager" type="Node"]
 script = ExtResource("1_r6i5e")
-cardsResourcesList = Array[Object]([ExtResource("2_rx0yw"), ExtResource("2_nunrf"), ExtResource("4_v8blo"), ExtResource("3_wfb4o")])
+cardsResourcesList = Array[Object]([ExtResource("2_rx0yw"), ExtResource("2_nunrf"), ExtResource("4_v8blo"), ExtResource("3_wfb4o"), ExtResource("6_sd8f3"), ExtResource("7_72rt1")])
 cardBase = ExtResource("6_454a2")
 
 [node name="PlayerHand" parent="." instance=ExtResource("2_r6i5e")]
@@ -115,3 +117,5 @@ theme_override_font_sizes/font_size = 60
 text = "Discard"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

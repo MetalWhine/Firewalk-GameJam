@@ -1,0 +1,429 @@
+[gd_scene load_steps=19 format=3 uid="uid://cmm1srqx8cm01"]
+
+[ext_resource type="Script" uid="uid://5n48rem8htce" path="res://src/TutorialAndStoryScreen.cs" id="1_u023g"]
+[ext_resource type="Texture2D" uid="uid://dxtesiyw665j2" path="res://assets/Cutscenes/cutscene_frame_2_.png" id="2_8syvq"]
+[ext_resource type="Theme" uid="uid://b2x6hihkdxfxf" path="res://src/Combat UI Theme.tres" id="2_wmesf"]
+[ext_resource type="Texture2D" uid="uid://dngax6djati3g" path="res://assets/Cutscenes/cutscene_frame_3_.png" id="3_8syvq"]
+[ext_resource type="Texture2D" uid="uid://beh8r3ok4sy5g" path="res://assets/Cutscenes/cutscene_frame_4_.png" id="4_6vk1s"]
+[ext_resource type="Texture2D" uid="uid://bxdsqfpyldx3j" path="res://assets/Cutscenes/cutscene_frame_5_.png" id="5_h3cn1"]
+[ext_resource type="Texture2D" uid="uid://cjyut23c5baf1" path="res://assets/Cutscenes/cutscene_frame_base_.png" id="6_h3cn1"]
+[ext_resource type="Texture2D" uid="uid://rqsejg0mfd2j" path="res://assets/NVIDIA_Share_cllbzTQweH.png" id="7_qt3nl"]
+[ext_resource type="AudioStream" uid="uid://n8j7qd6omd6l" path="res://assets/Minimalist6.wav" id="9_wsict"]
+[ext_resource type="Script" uid="uid://cci8rid08v785" path="res://src/ButtonClick.cs" id="10_68upe"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h3cn1"]
+load_path = "res://.godot/imported/cutscene_frame_1_.png-0b54b183c18dbe32c322e2d7fb94c7ae.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wmesf"]
+texture = SubResource("CompressedTexture2D_h3cn1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_03v7g"]
+texture = ExtResource("2_8syvq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d8vt2"]
+texture = ExtResource("3_8syvq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u023g"]
+texture = ExtResource("4_6vk1s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e7khx"]
+texture = ExtResource("5_h3cn1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qt3nl"]
+texture = ExtResource("6_h3cn1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h3cn1"]
+texture = ExtResource("6_h3cn1")
+
+[node name="Tutorial + Story" type="Control" node_paths=PackedStringArray("_panels")]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u023g")
+_panels = [NodePath("Panel 1"), NodePath("Panel 2"), NodePath("Panel 3"), NodePath("Panel 4"), NodePath("Panel 5"), NodePath("Panel 6"), NodePath("Panel 7")]
+
+[node name="Panel 1" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wmesf")
+
+[node name="Label" type="Label" parent="Panel 1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 433.0
+offset_right = -60.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 46
+text = "Long ago, a mutual friendship was bonded between the humans and the wolves"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel 2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1280.0
+offset_top = 924.0
+offset_right = 1280.0
+offset_bottom = 924.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_03v7g")
+
+[node name="Label" type="Label" parent="Panel 2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 433.0
+offset_right = -60.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 46
+text = "The wolves would control the pests of the crop, and the humans provides care for the wolf"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel 3" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2560.0
+offset_top = 924.0
+offset_right = 2560.0
+offset_bottom = 924.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_d8vt2")
+
+[node name="Label" type="Label" parent="Panel 3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 433.0
+offset_right = -60.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 46
+text = "One day, a wolf waas consumed by rage and went rabid, killing a human"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel 4" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3840.0
+offset_top = 924.0
+offset_right = 3840.0
+offset_bottom = 924.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u023g")
+
+[node name="Label" type="Label" parent="Panel 4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 433.0
+offset_right = -60.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 46
+text = "This baffled and frightened the humans, and with the bond broken, the wolves were hunted down to be slaughtered"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel 5" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5120.0
+offset_top = 924.0
+offset_right = 5120.0
+offset_bottom = 924.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_e7khx")
+
+[node name="Label" type="Label" parent="Panel 5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 433.0
+offset_right = -60.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 46
+text = "However, as the wolves fleed, the pests of the crop multiplied, starving the humans of their yield"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel 6" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6400.0
+offset_top = 924.0
+offset_right = 6400.0
+offset_bottom = 924.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qt3nl")
+
+[node name="Label" type="Label" parent="Panel 6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 92.0
+offset_right = -60.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 46
+text = "Desperate, the humans prayed for the last wolf to return to save them from the pests. The wolf fearing for his life agreed to the pact...
+
+Yet the wolf's anger runs deep, can the wolf maintain clarity for his mission?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel 7" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7680.0
+offset_top = 924.0
+offset_right = 7680.0
+offset_bottom = 924.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_h3cn1")
+
+[node name="NvidiaShareCllbzTQweH" type="Sprite2D" parent="Panel 7"]
+self_modulate = Color(0.552956, 0.552956, 0.552956, 1)
+position = Vector2(620, 360)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_qt3nl")
+
+[node name="Label2" type="Label" parent="Panel 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 369.0
+offset_top = 70.0
+offset_right = -687.0
+offset_bottom = -410.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 25
+text = "<- This is your rage, if you go over you lose the game. For every 10 rage you get 1 extra Atk, and every 30 you get extra energy"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="Panel 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 721.0
+offset_top = 363.0
+offset_right = -287.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 25
+text = "This is your energy ->"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label9" type="Label" parent="Panel 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 690.0
+offset_top = 246.0
+offset_right = -318.0
+offset_bottom = -406.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 25
+text = "This is the enemy's next move ->"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label8" type="Label" parent="Panel 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 503.0
+offset_top = 357.0
+offset_right = -557.0
+offset_bottom = -238.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 25
+text = "^^^^^^
+Press this once you are done with your turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label6" type="Label" parent="Panel 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 734.0
+offset_top = 534.0
+offset_right = -274.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 25
+text = "This is your deck and remaining cards ->"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label7" type="Label" parent="Panel 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 399.0
+offset_top = 621.0
+offset_right = -609.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 25
+text = "This is the energy cost to play cards ->"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Panel 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 630.0
+offset_top = 84.0
+offset_right = -396.0
+offset_bottom = -491.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 25
+text = "This is your  ->
+enemy's health, the objective is to reduce it to 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="Panel 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 226.0
+offset_top = 401.0
+offset_right = -800.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 25
+text = "<- Atk increases damage you deal, Res decreases amount of rage inflicted on you"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1035.0
+offset_top = 609.0
+offset_right = 1173.0
+offset_bottom = 666.0
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 50
+text = "Next >"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("9_wsict")
+script = ExtResource("10_68upe")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 609.0
+offset_right = 240.0
+offset_bottom = 666.0
+theme = ExtResource("2_wmesf")
+theme_override_font_sizes/font_size = 50
+text = "< BacK"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button2"]
+stream = ExtResource("9_wsict")
+script = ExtResource("10_68upe")
+
+[connection signal="button_down" from="Button" to="." method="NextScreen"]
+[connection signal="button_down" from="Button" to="Button/AudioStreamPlayer" method="ButtonClickedResponder"]
+[connection signal="button_down" from="Button2" to="." method="PreviousScreen"]
+[connection signal="button_down" from="Button2" to="Button2/AudioStreamPlayer" method="ButtonClickedResponder"]

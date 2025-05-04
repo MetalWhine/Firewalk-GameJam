@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 MouseBrain="*res://src/MouseBrain.cs"
+MusicPlayer="*res://src/Music Player.tscn"
 
 [display]
 

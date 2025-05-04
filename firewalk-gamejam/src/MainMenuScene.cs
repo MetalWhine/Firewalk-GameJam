@@ -9,7 +9,7 @@ public partial class MainMenuScene : Control
     public bool GamePlayed = false;
 
     [Signal]
-    public delegate void StartGameSignalEventHandler();
+    public delegate void NewGameSignalEventHandler();
 
     public override void _Ready()
     {
@@ -34,7 +34,7 @@ public partial class MainMenuScene : Control
 
     public void NewGame()
     {
-        EmitSignal(SignalName.StartGameSignal);
+        EmitSignal(SignalName.NewGameSignal);
         GamePlayed = true;
         Hide();
     }

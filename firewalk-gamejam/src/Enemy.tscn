@@ -1,21 +1,27 @@
 [gd_scene load_steps=9 format=3 uid="uid://c0c763ka1no8i"]
 
 [ext_resource type="Script" uid="uid://v0bogkme7otm" path="res://src/Enemy.cs" id="1_rnh5k"]
-[ext_resource type="Resource" uid="uid://b0llv4magi1jw" path="res://src/Enemy Resources/Pig.tres" id="2_rfgv3"]
-[ext_resource type="Resource" uid="uid://b4js5x1pxxpb1" path="res://src/Enemy Resources/Sheep.tres" id="3_v8ubm"]
+[ext_resource type="Resource" uid="uid://b0llv4magi1jw" path="res://src/Enemy Resources/Wasp.tres" id="2_rfgv3"]
 [ext_resource type="Resource" uid="uid://ccc0cvxvaw0ob" path="res://src/Enemy Resources/MoleKing.tres" id="4_kar7b"]
+[ext_resource type="Texture2D" uid="uid://t6tnkyxbdb5e" path="res://assets/Shadow.png" id="5_5gtn7"]
 [ext_resource type="Resource" uid="uid://t4nnd4celfy3" path="res://src/Enemy Resources/Mole.tres" id="5_jwvfg"]
-[ext_resource type="Texture2D" uid="uid://dow5iehtig70s" path="res://icon.svg" id="6_kar7b"]
+[ext_resource type="Texture2D" uid="uid://w00knkldsdq7" path="res://assets/Enemies/mole_greed_.png" id="5_wbws4"]
 [ext_resource type="Theme" uid="uid://bx1mr30ivyfab" path="res://src/Enemy Theme.tres" id="7_jwvfg"]
 [ext_resource type="Texture2D" uid="uid://darsl8qm38dfc" path="res://assets/GUI.png" id="8_wbws4"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_rnh5k")
-possibleEnemyResources = Array[Object]([ExtResource("2_rfgv3"), ExtResource("3_v8ubm"), ExtResource("5_jwvfg"), ExtResource("4_kar7b")])
+possibleEnemyResources = Array[Object]([ExtResource("2_rfgv3"), ExtResource("5_jwvfg"), ExtResource("4_kar7b")])
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.45098)
+position = Vector2(95, 199)
+scale = Vector2(1.74219, 0.261719)
+texture = ExtResource("5_5gtn7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(99, 151)
-texture = ExtResource("6_kar7b")
+texture = ExtResource("5_wbws4")
 
 [node name="Intent Label Background2" type="Sprite2D" parent="."]
 position = Vector2(95, 25)

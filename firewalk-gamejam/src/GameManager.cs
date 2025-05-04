@@ -8,6 +8,7 @@ public partial class GameManager : Node
 	public MainMenuScene mainMenuScene;
 	public Button mainMenuButton;
 	public LoseScreen loseScreen;
+	public TutorialAndStoryScreen tutorialAndStoryScreen;
 
 	public override void _Ready()
 	{
@@ -16,11 +17,15 @@ public partial class GameManager : Node
 		mainMenuScene = GetNode<MainMenuScene>("Main Menu Scene");
 		mainMenuButton = GetNode<Button>("Main Menu Button");
 		loseScreen = GetNode<LoseScreen>("Lose Screen");
+		tutorialAndStoryScreen = GetNode<TutorialAndStoryScreen>("Tutorial + Story");
 
 		combatManager.CardSelectCall += cardSelectScreen.ShowCardSelectScreen;
 		cardSelectScreen.CardSelected += combatManager.CardSelectedHandler;
 		cardSelectScreen.CardSkipped += combatManager.CardSkippedHandler;
-		mainMenuScene.StartGameSignal += combatManager.NewGameStarted;
+		mainMenuScene.NewGameSignal += tutorialAndStoryScreen.ShowTutorialScreen;
+		mainMenuScene.NewGameSignal += combatManager.DiscardAllCardsInHand;
+		tutorialAndStoryScreen.StartGame += combatManager.NewGameStarted;
+
 		mainMenuButton.ButtonDown += mainMenuScene.OpenMenu;
 
 		combatManager._player.GameOver += GameOver;

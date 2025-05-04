@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg75dm3vmxjtv"]
+[gd_scene load_steps=8 format=3 uid="uid://dg75dm3vmxjtv"]
 
 [ext_resource type="Script" uid="uid://cqdntcvl2ti0" path="res://src/LoseScreen.cs" id="1_neutj"]
 [ext_resource type="Theme" uid="uid://b2x6hihkdxfxf" path="res://src/Combat UI Theme.tres" id="2_6fqyo"]
+[ext_resource type="Texture2D" uid="uid://rx3wa3kin5x" path="res://assets/lose_font.png" id="3_6fqyo"]
+[ext_resource type="AudioStream" uid="uid://n8j7qd6omd6l" path="res://assets/Minimalist6.wav" id="3_jalxi"]
+[ext_resource type="FontFile" uid="uid://78dwrw8sofb6" path="res://assets/Tiny5-Regular.ttf" id="4_8n0xq"]
+[ext_resource type="Script" uid="uid://cci8rid08v785" path="res://src/ButtonClick.cs" id="4_i57l3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neutj"]
 bg_color = Color(0, 0, 0, 1)
@@ -32,11 +36,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.5
-offset_top = 302.0
-offset_right = 64.5
-offset_bottom = 333.0
+offset_left = -141.0
+offset_top = 238.0
+offset_right = 9.0
+offset_bottom = 269.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.00347, 2.00347)
 theme = ExtResource("2_6fqyo")
 text = "Go Back to Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("3_jalxi")
+script = ExtResource("4_i57l3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(639, 146)
+scale = Vector2(1.59519, 1.59519)
+texture = ExtResource("3_6fqyo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -68.0
+offset_right = 343.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_8n0xq")
+theme_override_font_sizes/normal_font_size = 50
+text = "Your rage consumed you whole, wreaking havoc aaround the village...
+You were gutted as a result"
+horizontal_alignment = 1
+
+[connection signal="button_down" from="Button" to="Button/AudioStreamPlayer" method="ButtonClickedResponder"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5a5qdac5db88"]
+[gd_scene load_steps=11 format=3 uid="uid://c5a5qdac5db88"]
 
 [ext_resource type="Script" uid="uid://kh4mh3bjk083" path="res://src/CombatManager.cs" id="1_37jj1"]
 [ext_resource type="PackedScene" uid="uid://b3s4quhu3tmfp" path="res://src/card_manager.tscn" id="1_fipv5"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b14qhegctuyu4" path="res://assets/UI books & more.png" id="3_lwqlr"]
 [ext_resource type="Texture2D" uid="uid://darsl8qm38dfc" path="res://assets/GUI.png" id="4_hliew"]
 [ext_resource type="Theme" uid="uid://b2x6hihkdxfxf" path="res://src/Combat UI Theme.tres" id="5_cac1i"]
+[ext_resource type="AudioStream" uid="uid://n8j7qd6omd6l" path="res://assets/Minimalist6.wav" id="6_cac1i"]
+[ext_resource type="Script" uid="uid://cci8rid08v785" path="res://src/ButtonClick.cs" id="7_ar6ch"]
 
 [node name="CombatScreen" type="Control"]
 layout_mode = 3
@@ -64,6 +66,10 @@ theme = ExtResource("5_cac1i")
 theme_override_font_sizes/font_size = 26
 text = "Next Turn"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Combat UI/Next Turn Button"]
+stream = ExtResource("6_cac1i")
+script = ExtResource("7_ar6ch")
+
 [node name="Attack Label" type="Label" parent="Combat UI"]
 layout_mode = 0
 offset_left = 135.0
@@ -102,9 +108,12 @@ vertical_alignment = 1
 [node name="Card Manager" parent="." instance=ExtResource("1_fipv5")]
 
 [node name="Enemy" parent="." instance=ExtResource("2_quyvt")]
-position = Vector2(895, 46)
+position = Vector2(900, 9)
+scale = Vector2(1.11278, 1.11278)
 
 [node name="Player" parent="." instance=ExtResource("3_i4b6q")]
-position = Vector2(149, 53)
+position = Vector2(116, 24)
+scale = Vector2(1.18461, 1.18461)
 
 [connection signal="button_down" from="Combat UI/Next Turn Button" to="." method="NextTurn"]
+[connection signal="button_down" from="Combat UI/Next Turn Button" to="Combat UI/Next Turn Button/AudioStreamPlayer" method="ButtonClickedResponder"]

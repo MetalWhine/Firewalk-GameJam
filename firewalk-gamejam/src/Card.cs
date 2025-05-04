@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class Card : Control
 {
@@ -10,6 +11,7 @@ public partial class Card : Control
     private Label _cardCostLabel;
     private Sprite2D _cardSprite;
     private AnimationPlayer _animationPlayer;
+    private AudioStreamPlayer _audioPlayer;
     #endregion
 
     #region BOOLEAN CHECKS
@@ -29,6 +31,7 @@ public partial class Card : Control
     private float _zoomMultiplier = 1.5f;
     [Export]
     private float zoomSpeed = 20f;
+    private bool _cardFinished = false;
 
     // Non Editable Card settings
     Vector2 _zoomMultiplierVector2;
@@ -37,6 +40,8 @@ public partial class Card : Control
 
     // Card template
     public CardResource cardResource;
+
+    private bool _hoveringOverCard = false;
     #endregion
 
     #region SIGNALS AND DELEGATES
@@ -54,7 +59,7 @@ public partial class Card : Control
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!forSelection)
+        if (!forSelection && !_cardFinished)
         {
             DragLogic();
             ZoomLogic();
@@ -67,13 +72,22 @@ public partial class Card : Control
         if (validity)
         {
             _animationPlayer.Stop();
+            _cardFinished = true;
             EmitSignal(SignalName.CardDropped, validity, this);
-            QueueFree();
+            _animationPlayer.Play("Card_Played");
         }
         else
         {
             EmitSignal(SignalName.CardDropped, validity, this);
             _animationPlayer.Stop();
+        }
+    }
+
+    public void AnimationFinishedReceiver(StringName str)
+    {
+        if(str =="Card_Played")
+        {
+            QueueFree();
         }
     }
 
@@ -83,6 +97,10 @@ public partial class Card : Control
         {
             if (Input.IsActionPressed("Click"))
             {
+                if (!_isDragging)
+                {
+                    PlaySound();
+                }
                 GlobalPosition = CustomLerpVector2(GlobalPosition, GetGlobalMousePosition() - (Size*Scale.X / 2), _dragSpeed*(float)GetPhysicsProcessDeltaTime());
                 _isDragging = true;
                 MouseBrain.current_card_held = this;
@@ -99,6 +117,7 @@ public partial class Card : Control
             }
             else if (MouseBrain.current_card_held == this)
             {
+                PlaySound();
                 _isDragging = false;
                 MouseBrain.current_card_held = null;
                 if (_isValidDropPosition)
@@ -120,11 +139,17 @@ public partial class Card : Control
     {
         if ((_isMouseOver || _isDragging) && (MouseBrain.current_card_held == null || MouseBrain.current_card_held == this) && Scale != _zoomMultiplierVector2)
         {
+            if (!_hoveringOverCard)
+            {
+                PlaySound();
+                _hoveringOverCard = true;
+            }
             Scale = CustomLerpVector2(Scale, _zoomMultiplierVector2, zoomSpeed * (float)GetPhysicsProcessDeltaTime());
             ZIndex = 20;
         }
         else if (!_isMouseOver && Scale != Vector2.One)
         {
+            _hoveringOverCard = false;
             Scale = CustomLerpVector2(Scale, Vector2.One, zoomSpeed * (float)GetPhysicsProcessDeltaTime());
             ZIndex = defaultZIndex;
         }
@@ -141,6 +166,7 @@ public partial class Card : Control
         _zoomMultiplierVector2 = new Vector2(_zoomMultiplier, _zoomMultiplier);
         _cardSprite = GetNode<Sprite2D>("Card Sprite");
         _cardSprite.Texture = cardResource.CardSrpite;
+        _audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 
         _cardNameLabel = GetNode<Label>("Card Sprite/Name Label");
         _cardCostLabel = GetNode<Label>("Card Sprite/Cost Label");
@@ -208,6 +234,12 @@ public partial class Card : Control
     private void ValidityCheck()
     {
         EmitSignal(SignalName.CardDroppedValidCheck, this);
+    }
+
+    private void PlaySound()
+    {
+        _audioPlayer.PitchScale = (float)GD.RandRange(0.8, 1.2);
+        _audioPlayer.Play();
     }
     #endregion
 
